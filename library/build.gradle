@@ -1,0 +1,43 @@
+apply plugin: Android.libPlugin
+
+android {
+    compileSdkVersion Doki.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion Doki.minSdkVersion
+        targetSdkVersion Doki.compileSdkVersion
+        versionCode Doki.versionCode
+        versionName Doki.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/core_debug.kotlin_module'
+        pickFirst 'META-INF/core_release.kotlin_module'
+        pickFirst 'META-INF/library_debug.kotlin_module'
+        pickFirst 'META-INF/library_release.kotlin_module'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Kotlin.stdlib
+    implementation Libraries.appCompat
+}
+
+apply from: '../lib-artifacts.gradle'
