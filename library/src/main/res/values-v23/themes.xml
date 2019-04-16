@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DefaultDokiTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/doki_primary_color</item>
+        <item name="colorPrimaryDark">@color/doki_primary_dark_color</item>
+        <item name="colorAccent">@color/doki_accent_color</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/doki_navigation_bar_color</item>
+    </style>
+</resources>

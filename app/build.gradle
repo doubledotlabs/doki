@@ -38,6 +38,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':library')
     implementation Kotlin.stdlib
     implementation Libraries.appCompat
 }

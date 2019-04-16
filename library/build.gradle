@@ -1,4 +1,5 @@
 apply plugin: Android.libPlugin
+apply plugin: Kotlin.androidPlugin
 
 android {
     compileSdkVersion Doki.compileSdkVersion
@@ -8,12 +9,15 @@ android {
         targetSdkVersion Doki.compileSdkVersion
         versionCode Doki.versionCode
         versionName Doki.versionName
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        consumerProguardFiles 'proguard-rules.pro'
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            consumerProguardFiles 'proguard-rules.pro'
         }
     }
 

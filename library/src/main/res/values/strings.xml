@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">doki</string>
+
+    <string name="manufacturer">Manufacturer</string>
+    <string name="rating">Rating</string>
+    <string name="device">Device</string>
+    <string name="running">Running</string>
+    <string name="close">Close</string>
+
 </resources>

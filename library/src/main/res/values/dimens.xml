@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="forty_eight_dp">48dp</dimen>
+    <dimen name="twenty_four_dp">24dp</dimen>
+    <dimen name="twelve_dp">12dp</dimen>
+    <dimen name="eight_dp">8dp</dimen>
+    <dimen name="seven_dp">7dp</dimen>
+    <dimen name="six_dp">6dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
+
+    <dimen name="touch_target">@dimen/forty_eight_dp</dimen>
+</resources>
