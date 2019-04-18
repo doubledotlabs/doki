@@ -25,6 +25,7 @@ data class DokiResponse(
     fun getHTMLContent(
         explanationTitle: String = "",
         solutionTitle: String = "",
+        lineHeight: Float = 1.8F,
         @FloatRange(from = 0.0, to = 1.0, fromInclusive = true, toInclusive = true) maxImgWidth: Float = .75F,
         @ColorInt imgBorderColor: Int = Color.BLACK,
         @ColorInt textColor: Int = Color.BLACK,
@@ -38,7 +39,7 @@ data class DokiResponse(
         val actualSolutionTitle = if (solutionTitle.hasContent()) "<h2>$solutionTitle</h2>" else ""
         return "<html><head>" +
                 "<style>html{margin: ${marginTopPx}px ${marginRightPx}px ${marginBottomPx}px ${marginLeftPx}px;" +
-                "color: ${textColor.toRgbaString()};} a{color: ${linksColor.toRgbaString()}}" +
+                "color: ${textColor.toRgbaString()}; line-height: ${lineHeight}em;} a{color: ${linksColor.toRgbaString()}}" +
                 " img{display: block;height: auto;max-width: ${maxImgWidth * 100}%;" +
                 "margin-left: auto;margin-right: auto;border: 1px solid ${imgBorderColor.toRgbaString()}}</style>" +
                 "</head><body>$actualExplanationTitle$explanation<br>$actualSolutionTitle$userSolution</body></html>"
