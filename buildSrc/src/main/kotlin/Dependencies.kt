@@ -7,7 +7,7 @@ object Doki {
     const val appId = "$groupId.app"
 
     const val compileSdkVersion = 28
-    const val minSdkVersion = 19
+    const val minSdkVersion = 16
 }
 
 // Core dependencies
