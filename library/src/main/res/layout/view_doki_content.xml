@@ -181,6 +181,7 @@
             android:layout_height="@dimen/one_dp"/>
 
     <LinearLayout
+            android:id="@+id/doki_btns_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/touch_target"

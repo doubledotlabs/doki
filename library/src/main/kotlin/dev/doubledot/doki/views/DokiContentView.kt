@@ -54,6 +54,7 @@ open class DokiContentView @JvmOverloads constructor(
 
     private val headerContainer: LinearLayout? by bind(R.id.doki_details_header)
 
+    private val btnsContainer: View? by bind(R.id.doki_btns_container)
     private val reportBtn: AppCompatTextView? by bind(R.id.doki_report_btn)
     private val closeBtn: AppCompatTextView? by bind(R.id.doki_close_btn)
 
@@ -68,6 +69,8 @@ open class DokiContentView @JvmOverloads constructor(
     private val contentWebViewMarginHorizontal: Int by lazy {
         (resources.getDimension(R.dimen.twenty_four_dp) / 3F).roundToInt()
     }
+
+    private var devSolutionMessage: String = ""
 
     var explanationTitleText: String = ""
     var solutionTitleText: String = ""
@@ -270,7 +273,8 @@ open class DokiContentView @JvmOverloads constructor(
 
         try {
             context.runOnUiThread {
-                reportBtn?.visibleIf(content.devSolution.orEmpty().hasContent())
+                devSolutionMessage = content.devSolution.orEmpty()
+                reportBtn?.visibleIf(devSolutionMessage.hasContent())
                 ratingView?.rating = content.award
                 ratingContainer?.visibleIf(content.award > 0)
 
@@ -293,6 +297,10 @@ open class DokiContentView @JvmOverloads constructor(
             Log.e("Doki", e.message)
             e.printStackTrace()
         }
+    }
+
+    fun setOnReportListener(listener: (view: View?, message: String) -> Unit = { _, _ -> }) {
+        reportBtn?.setOnClickListener { listener(it, devSolutionMessage) }
     }
 
     fun setOnCloseListener(listener: (view: View?) -> Unit = { _ -> }) {
@@ -333,5 +341,9 @@ open class DokiContentView @JvmOverloads constructor(
 
     fun setIconsStyle(style: DokiRatingView.Style) {
         ratingView?.setIconsStyle(style)
+    }
+
+    fun setButtonsVisibility(visible: Boolean) {
+        btnsContainer?.visibleIf(visible)
     }
 }
