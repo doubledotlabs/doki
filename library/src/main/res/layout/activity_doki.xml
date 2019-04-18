@@ -149,20 +149,45 @@
             android:background="@color/divider_color"/>
 
     <LinearLayout
-            android:id="@+id/doki_close_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="@dimen/touch_target"
-            android:background="?selectableItemBackground">
+            android:orientation="horizontal">
 
         <dev.doubledot.doki.views.BaselineGridTextView
-                android:layout_width="match_parent"
+                android:id="@+id/doki_report_btn"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minHeight="@dimen/touch_target"
+                android:background="?selectableItemBackground"
                 android:textAllCaps="true"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:padding="@dimen/twelve_dp"
-                android:text="@string/close"/>
+                android:gravity="start|center_vertical"
+                android:paddingTop="@dimen/twelve_dp"
+                android:paddingBottom="@dimen/twelve_dp"
+                android:paddingStart="@dimen/twenty_four_dp"
+                android:paddingEnd="@dimen/twenty_four_dp"
+                android:text="@string/report"
+                android:textStyle="bold"
+                android:textColor="?colorAccent"
+                android:visibility="gone"/>
+
+        <dev.doubledot.doki.views.BaselineGridTextView
+                android:id="@+id/doki_close_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minHeight="@dimen/touch_target"
+                android:background="?selectableItemBackground"
+                android:textAllCaps="true"
+                android:gravity="end|center_vertical"
+                android:paddingTop="@dimen/twelve_dp"
+                android:paddingBottom="@dimen/twelve_dp"
+                android:paddingStart="@dimen/twenty_four_dp"
+                android:paddingEnd="@dimen/twenty_four_dp"
+                android:text="@string/close"
+                android:textStyle="bold"
+                android:textColor="?colorAccent"/>
 
     </LinearLayout>
 

@@ -9,14 +9,14 @@ import dev.doubledot.doki.api.extensions.hasContent
 import dev.doubledot.doki.api.extensions.round
 
 data class DokiResponse(
-    private val name: String,
-    private val manufacturers: String,
-    private val url: String,
-    private val award: Int,
-    private val position: Int,
-    private val explanation: String,
-    private val userSolution: String,
-    private val devSolution: String?
+    val name: String,
+    val manufacturers: String,
+    val url: String,
+    val award: Int,
+    val position: Int,
+    val explanation: String,
+    val userSolution: String,
+    val devSolution: String?
 ) : Parcelable {
 
     private fun Int.toRgbaString(): String =

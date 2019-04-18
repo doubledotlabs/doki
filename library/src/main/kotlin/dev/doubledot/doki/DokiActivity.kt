@@ -5,17 +5,18 @@ import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import android.webkit.WebView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import dev.doubledot.doki.api.extensions.fullAndroidVersion
+import dev.doubledot.doki.api.extensions.hasContent
 import dev.doubledot.doki.api.models.DokiResponse
 import dev.doubledot.doki.api.tasks.DokiTask
 import dev.doubledot.doki.api.tasks.DokiTaskCallback
 import dev.doubledot.doki.extensions.bind
 import dev.doubledot.doki.extensions.ignore
 import dev.doubledot.doki.extensions.loadHTML
+import dev.doubledot.doki.extensions.visibleIf
 import kotlin.math.roundToInt
 
 internal class DokiActivity : AppCompatActivity() {
@@ -24,7 +25,9 @@ internal class DokiActivity : AppCompatActivity() {
     private val deviceText: AppCompatTextView? by bind(R.id.doki_device)
     private val versionText: AppCompatTextView? by bind(R.id.doki_android_version)
     private val contentWebView: WebView? by bind(R.id.doki_main_content)
-    private val closeBtn: LinearLayout? by bind(R.id.doki_close_btn)
+
+    private val reportBtn: AppCompatTextView? by bind(R.id.doki_report_btn)
+    private val closeBtn: AppCompatTextView? by bind(R.id.doki_close_btn)
 
     private val task: DokiTask by lazy { DokiTask() }
 
@@ -55,6 +58,7 @@ internal class DokiActivity : AppCompatActivity() {
             override fun onSuccess(response: DokiResponse?) {
                 Log.d("Doki", response?.toString())
                 runOnUiThread {
+                    reportBtn?.visibleIf(response?.devSolution.orEmpty().hasContent())
                     contentWebView?.loadHTML(
                         response?.getHTMLContent(
                             explanationTitle = explanationTitleText,

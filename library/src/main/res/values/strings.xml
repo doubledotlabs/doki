@@ -6,6 +6,7 @@
     <string name="device">Device</string>
     <string name="running">Running</string>
     <string name="close">Close</string>
+    <string name="report">Report</string>
 
     <string name="explanation">Explanation</string>
     <string name="solution">Solution</string>
