@@ -30,7 +30,7 @@
                     android:textAllCaps="true"
                     android:maxLines="1"
                     android:text="@string/manufacturer"
-                    style="@style/Doki.Overline"
+                    style="@style/Doki.Custom.Overline"
                     tools:ignore="UnusedAttribute"/>
 
             <dev.doubledot.doki.views.BaselineGridTextView
@@ -38,7 +38,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    style="@style/Doki.Headline"
+                    style="@style/Doki.Custom.Headline"
                     tools:ignore="UnusedAttribute"
                     tools:text="Google"/>
 
@@ -60,7 +60,7 @@
                     android:layout_gravity="center_vertical|end"
                     android:maxLines="1"
                     android:text="@string/rating"
-                    style="@style/Doki.Overline"
+                    style="@style/Doki.Custom.Overline"
                     tools:ignore="UnusedAttribute"/>
 
             <dev.doubledot.doki.views.DokiRatingView
@@ -103,7 +103,7 @@
                     android:layout_gravity="center_horizontal"
                     android:maxLines="1"
                     android:text="@string/device"
-                    style="@style/Doki.Overline"
+                    style="@style/Doki.Custom.Overline"
                     tools:ignore="UnusedAttribute"/>
 
             <dev.doubledot.doki.views.BaselineGridTextView
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:maxLines="1"
-                    style="@style/Doki.Headline"
+                    style="@style/Doki.Custom.Headline"
                     tools:text="Pixel 3 XL"/>
 
         </LinearLayout>
@@ -132,7 +132,7 @@
                     android:layout_gravity="center_horizontal"
                     android:maxLines="1"
                     android:text="@string/running"
-                    style="@style/Doki.Overline"
+                    style="@style/Doki.Custom.Overline"
                     tools:ignore="UnusedAttribute"/>
 
             <dev.doubledot.doki.views.BaselineGridTextView
@@ -141,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:maxLines="1"
-                    style="@style/Doki.Headline"
+                    style="@style/Doki.Custom.Headline"
                     tools:text="Android 9.0 Pie"/>
 
         </LinearLayout>
@@ -200,7 +200,7 @@
                 android:paddingStart="@dimen/twenty_four_dp"
                 android:paddingEnd="@dimen/twenty_four_dp"
                 android:text="@string/report"
-                style="@style/Doki.Button"
+                style="@style/Doki.Custom.Button"
                 android:visibility="gone"/>
 
         <dev.doubledot.doki.views.BaselineGridTextView
@@ -217,7 +217,7 @@
                 android:paddingStart="@dimen/twenty_four_dp"
                 android:paddingEnd="@dimen/twenty_four_dp"
                 android:text="@string/close"
-                style="@style/Doki.Button"/>
+                style="@style/Doki.Custom.Button"/>
 
     </LinearLayout>
 

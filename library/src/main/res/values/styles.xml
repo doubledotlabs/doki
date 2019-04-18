@@ -27,4 +27,8 @@
         <item name="android:textSize">14sp</item>
         <item name="android:letterSpacing">0.0892857143</item>
     </style>
+
+    <style name="Doki.Custom.Headline" parent="Doki.Headline"/>
+    <style name="Doki.Custom.Overline" parent="Doki.Overline"/>
+    <style name="Doki.Custom.Button" parent="Doki.Button"/>
 </resources>
