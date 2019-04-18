@@ -4,18 +4,9 @@ The aim of [dontkillmyapp.com](https://dontkillmyapp.com/problem) is to create a
 
 [![Freenode IRC channel.](https://img.shields.io/badge/irc.freenode.net-%23%23doubledotlabs-brightgreen.svg)](https://webchat.freenode.net/?channels=%23%23doubledotlabs&uio=MTY9dHJ1ZSY5PXRydWUmMTE9MjE1e1)
 [![Twitter account.](https://img.shields.io/badge/twitter-%40doubledotlabs-blue.svg?color=43b4f9&logo=twitter)](https://twitter.com/doubledotlabs)
-
-
-## Preview
-
-| Default Activity | Activity w Custom Theme | Dialog |
-|------------------|-------------------------|-----------------------------------------|
-| ![1](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![2](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![3](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) |
-
-| Customized Doki View | In an emulator |  |
-|------------------|-------------------------|-----------------------------------------|
-| ![4](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) | ![5](https://github.com/DoubleDotLabs/doki/raw/master/art/5.png) |  |
-
+![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+[![JitPack](https://jitpack.io/v/dev.doubledot/doki.svg)](https://jitpack.io/#dev.doubledot/doki)
+[![Build Status](https://travis-ci.org/DoubleDotLabs/doki.svg?branch=master)](https://travis-ci.org/DoubleDotLabs/doki)
 
 # How to use it
 Doki is available via JitPack, so getting it as simple as adding it as a dependency, like this:
@@ -41,3 +32,13 @@ where `{latest version}` corresponds to published version in  [![JitPack](https:
 ## Customization
 
 If you are using the `DokiContentView`, you can customize it by settings custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
+
+## Previews
+
+| Default Activity | Activity w Custom Theme | Dialog |
+|------------------|-------------------------|-----------------------------------------|
+| ![1](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![2](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![3](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) |
+
+| Customized Doki View | In an emulator |  |
+|------------------|-------------------------|-----------------------------------------|
+| ![4](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) | ![5](https://github.com/DoubleDotLabs/doki/raw/master/art/5.png) |  |
