@@ -81,7 +81,7 @@ The `DokiResponse` object will have the following values:
 
 ## Customization
 
-If you are using the `DokiContentView`, you can customize it by settings custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
+If you are using the `DokiContentView`, you can customize it by setting custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
 
 ## Previews
 
