@@ -12,7 +12,7 @@ object Doki {
 
 // Core dependencies
 object Kotlin {
-    const val version = "1.3.21"
+    const val version = "1.3.30"
     const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib:${Kotlin.version}"
     const val plugin = "kotlin"
     const val androidPlugin = "kotlin-android"
