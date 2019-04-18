@@ -1,9 +1,9 @@
 package dev.doubledot.doki.app
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
-import dev.doubledot.doki.Doki
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         val btn: AppCompatButton? = findViewById(R.id.launch_btn)
         btn?.setOnClickListener {
-            Doki.launch(this@MainActivity)
+            startActivity(Intent(this@MainActivity, DokiActivity::class.java))
         }
     }
 }

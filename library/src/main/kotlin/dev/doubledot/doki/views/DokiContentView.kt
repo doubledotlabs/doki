@@ -205,27 +205,36 @@ open class DokiContentView @JvmOverloads constructor(
         }
         headerContainer?.setBackgroundColor(headerBgColor)
 
-        val defaultActiveIconsDrawable = try {
-            ContextCompat.getDrawable(context, R.drawable.ic_thumb)
+        val iconsStyleId = try {
+            styledAttrs?.getInt(R.styleable.DokiContentView_dokiIconsStyle, -1) ?: -1
         } catch (e: Exception) {
-            null
+            -1
         }
-        activeIconsDrawable = try {
-            styledAttrs?.getDrawable(R.styleable.DokiContentView_dokiActiveIconsDrawable) ?: defaultActiveIconsDrawable
-        } catch (e: Exception) {
-            defaultActiveIconsDrawable
-        }
+        if (iconsStyleId >= 0) setIconsStyle(DokiRatingView.Style.getFromId(iconsStyleId))
+        else {
+            val defaultActiveIconsDrawable = try {
+                ContextCompat.getDrawable(context, R.drawable.ic_thumb)
+            } catch (e: Exception) {
+                null
+            }
+            activeIconsDrawable = try {
+                styledAttrs?.getDrawable(R.styleable.DokiContentView_dokiActiveIconsDrawable)
+                    ?: defaultActiveIconsDrawable
+            } catch (e: Exception) {
+                defaultActiveIconsDrawable
+            }
 
-        val defaultInactiveIconsDrawable = try {
-            ContextCompat.getDrawable(context, R.drawable.ic_thumb_outline)
-        } catch (e: Exception) {
-            null
-        }
-        inactiveIconsDrawable = try {
-            styledAttrs?.getDrawable(R.styleable.DokiContentView_dokiInactiveIconsDrawable)
-                ?: defaultInactiveIconsDrawable
-        } catch (e: Exception) {
-            defaultInactiveIconsDrawable
+            val defaultInactiveIconsDrawable = try {
+                ContextCompat.getDrawable(context, R.drawable.ic_thumb_outline)
+            } catch (e: Exception) {
+                null
+            }
+            inactiveIconsDrawable = try {
+                styledAttrs?.getDrawable(R.styleable.DokiContentView_dokiInactiveIconsDrawable)
+                    ?: defaultInactiveIconsDrawable
+            } catch (e: Exception) {
+                defaultInactiveIconsDrawable
+            }
         }
 
         styledAttrs?.recycle()
@@ -340,7 +349,16 @@ open class DokiContentView @JvmOverloads constructor(
     }
 
     fun setIconsStyle(style: DokiRatingView.Style) {
-        ratingView?.setIconsStyle(style)
+        activeIconsDrawable = try {
+            ContextCompat.getDrawable(context, style.activeResId)
+        } catch (e: Exception) {
+            null
+        }
+        inactiveIconsDrawable = try {
+            ContextCompat.getDrawable(context, style.inactiveResId)
+        } catch (e: Exception) {
+            null
+        }
     }
 
     fun setButtonsVisibility(visible: Boolean) {

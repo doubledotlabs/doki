@@ -1,16 +1,18 @@
-package dev.doubledot.doki
+package dev.doubledot.doki.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import dev.doubledot.doki.api.models.DokiResponse
 import dev.doubledot.doki.api.tasks.DokiTask
 import dev.doubledot.doki.api.tasks.DokiTaskCallback
-import dev.doubledot.doki.extensions.bind
 import dev.doubledot.doki.views.DokiContentView
 
 internal class DokiActivity : AppCompatActivity() {
 
-    private val dokiContent: DokiContentView? by bind(R.id.doki_content)
+    private val dokiContent: DokiContentView? by lazy {
+        findViewById<DokiContentView?>(R.id.doki_content)
+    }
+
     private val task: DokiTask by lazy { DokiTask() }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,10 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dev.doubledot.doki">
-
-    <application>
-        <activity
-                android:name=".DokiActivity"
-                android:theme="@style/DefaultDokiTheme"/>
-    </application>
-
-</manifest>
+<manifest package="dev.doubledot.doki"/>

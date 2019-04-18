@@ -146,10 +146,18 @@ open class DokiRatingView @JvmOverloads constructor(
     }
 
     enum class Style(@DrawableRes val activeResId: Int, @DrawableRes val inactiveResId: Int) {
-        DEFAULT(R.drawable.ic_thumb, R.drawable.ic_thumb_outline),
         THUMB(R.drawable.ic_thumb, R.drawable.ic_thumb_outline),
         FACE(R.drawable.ic_angry, R.drawable.ic_angry_outline),
         POOP(R.drawable.ic_poop, R.drawable.ic_poop_outline),
         TRASH(R.drawable.ic_trash, R.drawable.ic_trash_outline);
+
+        companion object {
+            fun getFromId(id: Int): Style = when (id) {
+                1 -> FACE
+                2 -> POOP
+                3 -> TRASH
+                else -> THUMB
+            }
+        }
     }
 }
