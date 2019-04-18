@@ -1,4 +1,6 @@
-# Don't Kill My App - Library
+# Doki 
+
+**A Don't Kill My App Library**
 
 The aim of [dontkillmyapp.com](https://dontkillmyapp.com/problem) is to create a collection of guides and information to help users and developers troubleshoot issues on their devices related to background tasks being killed unnecessarily by the Android system. This library displays relevant information from this site to the user of an affected application, and attempts to walk users through the process of solving the problem themselves, hopefully reducing the amount of time that developers have to spend providing support as a result of these issues.
 
