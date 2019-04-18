@@ -136,16 +136,10 @@
             android:fillViewport="true"
             android:overScrollMode="ifContentScrolls">
 
-        <dev.doubledot.doki.views.BaselineGridTextView
+        <WebView
                 android:id="@+id/doki_main_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:paddingStart="@dimen/twenty_four_dp"
-                android:paddingEnd="@dimen/twenty_four_dp"
-                android:paddingTop="@dimen/twelve_dp"
-                android:paddingBottom="@dimen/twelve_dp"
-                tools:text="Google"/>
+                android:layout_height="wrap_content"/>
 
     </ScrollView>
 

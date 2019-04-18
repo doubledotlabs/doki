@@ -7,4 +7,7 @@
     <string name="running">Running</string>
     <string name="close">Close</string>
 
+    <string name="explanation">Explanation</string>
+    <string name="solution">Solution</string>
+
 </resources>
