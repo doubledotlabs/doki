@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DokiContentView">
+        <attr name="dokiPrimaryTextColor" format="color|reference"/>
+        <attr name="dokiSecondaryTextColor" format="color|reference"/>
+        <attr name="dokiButtonsTextColor" format="color|reference"/>
+        <attr name="dokiActiveIconsColor" format="color|reference"/>
+        <attr name="dokiInactiveIconsColor" format="color|reference"/>
+        <attr name="dokiActiveIconsDrawable" format="reference"/>
+        <attr name="dokiInactiveIconsDrawable" format="reference"/>
+        <attr name="dokiExplanationTitle" format="string|reference"/>
+        <attr name="dokiSolutionTitle" format="string|reference"/>
+        <attr name="dokiBackgroundColor" format="color|reference"/>
+        <attr name="dokiDividerColor" format="color|reference"/>
+        <attr name="dokiImgBorderColor" format="color|reference"/>
+        <attr name="dokiHeaderBackgroundColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

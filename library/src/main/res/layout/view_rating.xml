@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:paddingTop="@dimen/rating_icons_vertical_spacing"
+        android:paddingBottom="@dimen/rating_icons_vertical_spacing">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rating_icon_a"
+            android:layout_width="@dimen/rating_icons_size"
+            android:layout_height="@dimen/rating_icons_size"
+            app:srcCompat="@drawable/ic_thumb"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rating_icon_b"
+            android:layout_width="@dimen/rating_icons_size"
+            android:layout_height="@dimen/rating_icons_size"
+            android:layout_marginStart="@dimen/rating_icons_horizontal_spacing"
+            app:srcCompat="@drawable/ic_thumb"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rating_icon_c"
+            android:layout_width="@dimen/rating_icons_size"
+            android:layout_height="@dimen/rating_icons_size"
+            android:layout_marginStart="@dimen/rating_icons_horizontal_spacing"
+            app:srcCompat="@drawable/ic_thumb"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rating_icon_d"
+            android:layout_width="@dimen/rating_icons_size"
+            android:layout_height="@dimen/rating_icons_size"
+            android:layout_marginStart="@dimen/rating_icons_horizontal_spacing"
+            app:srcCompat="@drawable/ic_thumb_outline"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/rating_icon_e"
+            android:layout_width="@dimen/rating_icons_size"
+            android:layout_height="@dimen/rating_icons_size"
+            android:layout_marginStart="@dimen/rating_icons_horizontal_spacing"
+            app:srcCompat="@drawable/ic_thumb_outline"/>
+
+</LinearLayout>

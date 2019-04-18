@@ -9,4 +9,8 @@
     <dimen name="one_dp">1dp</dimen>
 
     <dimen name="touch_target">@dimen/forty_eight_dp</dimen>
+
+    <dimen name="rating_icons_size">14dp</dimen>
+    <dimen name="rating_icons_horizontal_spacing">8dp</dimen>
+    <dimen name="rating_icons_vertical_spacing">6dp</dimen>
 </resources>

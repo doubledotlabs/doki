@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="divider_color">#1F000000</color>
-    <color name="device_details_color">#0A000000</color>
-
     <color name="doki_primary_color">#F5F5F5</color>
     <color name="doki_primary_dark_color">#BDBDBD</color>
     <color name="doki_accent_color">#4285F4</color>

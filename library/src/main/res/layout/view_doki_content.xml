@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/doki_full_content"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/twenty_four_dp"
+            android:paddingEnd="@dimen/twenty_four_dp"
+            android:paddingTop="@dimen/twelve_dp"
+            android:paddingBottom="@dimen/twelve_dp"
+            android:baselineAligned="false">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_manufacturer_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:maxLines="1"
+                    android:text="@string/manufacturer"
+                    style="@style/Doki.Overline"
+                    tools:ignore="UnusedAttribute"/>
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_manufacturer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    style="@style/Doki.Headline"
+                    tools:ignore="UnusedAttribute"
+                    tools:text="Google"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/doki_rating_container"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="end"
+                android:visibility="gone">
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_rating_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center_vertical|end"
+                    android:maxLines="1"
+                    android:text="@string/rating"
+                    style="@style/Doki.Overline"
+                    tools:ignore="UnusedAttribute"/>
+
+            <dev.doubledot.doki.views.DokiRatingView
+                    android:id="@+id/doki_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|end"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+            android:id="@+id/doki_divider_a"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_dp"/>
+
+    <LinearLayout
+            android:id="@+id/doki_details_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/twenty_four_dp"
+            android:paddingEnd="@dimen/twenty_four_dp"
+            android:paddingTop="@dimen/twelve_dp"
+            android:paddingBottom="@dimen/twelve_dp"
+            android:baselineAligned="false">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_device_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="@string/device"
+                    style="@style/Doki.Overline"
+                    tools:ignore="UnusedAttribute"/>
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_device"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:maxLines="1"
+                    style="@style/Doki.Headline"
+                    tools:text="Pixel 3 XL"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="end"
+                android:orientation="vertical">
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_android_version_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAllCaps="true"
+                    android:layout_gravity="center_horizontal"
+                    android:maxLines="1"
+                    android:text="@string/running"
+                    style="@style/Doki.Overline"
+                    tools:ignore="UnusedAttribute"/>
+
+            <dev.doubledot.doki.views.BaselineGridTextView
+                    android:id="@+id/doki_android_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:maxLines="1"
+                    style="@style/Doki.Headline"
+                    tools:text="Android 9.0 Pie"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+        <ProgressBar
+                android:id="@+id/doki_loading_view"
+                style="?android:progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+        <WebView
+                android:id="@+id/doki_web_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"/>
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/fake_shadow"
+                android:layout_gravity="top|center_horizontal"/>
+
+    </FrameLayout>
+
+    <View
+            android:id="@+id/doki_divider_b"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/touch_target"
+            android:orientation="horizontal">
+
+        <dev.doubledot.doki.views.BaselineGridTextView
+                android:id="@+id/doki_report_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minHeight="@dimen/touch_target"
+                android:background="?selectableItemBackground"
+                android:textAllCaps="true"
+                android:gravity="start|center_vertical"
+                android:paddingTop="@dimen/twelve_dp"
+                android:paddingBottom="@dimen/twelve_dp"
+                android:paddingStart="@dimen/twenty_four_dp"
+                android:paddingEnd="@dimen/twenty_four_dp"
+                android:text="@string/report"
+                style="@style/Doki.Button"
+                android:visibility="gone"/>
+
+        <dev.doubledot.doki.views.BaselineGridTextView
+                android:id="@+id/doki_close_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minHeight="@dimen/touch_target"
+                android:background="?selectableItemBackground"
+                android:textAllCaps="true"
+                android:gravity="end|center_vertical"
+                android:paddingTop="@dimen/twelve_dp"
+                android:paddingBottom="@dimen/twelve_dp"
+                android:paddingStart="@dimen/twenty_four_dp"
+                android:paddingEnd="@dimen/twenty_four_dp"
+                android:text="@string/close"
+                style="@style/Doki.Button"/>
+
+    </LinearLayout>
+
+    <View
+            android:id="@+id/doki_divider_c"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/one_dp"/>
+
+</LinearLayout>
