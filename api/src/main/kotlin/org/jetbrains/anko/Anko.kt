@@ -31,7 +31,7 @@ import java.util.concurrent.Future
 /**
  * Execute [f] on the application UI thread.
  */
-internal fun Context.runOnUiThread(f: Context.() -> Unit) {
+fun Context.runOnUiThread(f: Context.() -> Unit) {
     if (Looper.getMainLooper() === Looper.myLooper()) f() else ContextHelper.handler.post { f() }
 }
 
