@@ -9,6 +9,7 @@ android {
         targetSdkVersion Doki.compileSdkVersion
         versionCode Doki.versionCode
         versionName Doki.versionName
+        vectorDrawables.useSupportLibrary = true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         consumerProguardFiles 'proguard-rules.pro'
     }
