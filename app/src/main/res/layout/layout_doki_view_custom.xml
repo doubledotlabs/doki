@@ -16,4 +16,14 @@
         app:dokiHeaderBackgroundColor="#2c3e50"
         app:dokiDividerColor="#f1c40f"
         app:dokiImgBorderColor="#27ae60"
-        app:dokiIconsStyle="POOP"/>
+        app:dokiActiveIconsDrawable="@drawable/ic_alarm"
+        app:dokiInactiveIconsDrawable="@drawable/ic_alarm_outline"
+/>
+
+        <!--
+            Additionally, if you don't want to set custom drawables for active and inactive icons,
+            you can set any of the 4 included styles using this attribute:
+            app:dokiIconsStyle=""
+            Available styles are: THUMB, FACE, POOP and TRASH
+        -->
+

@@ -15,3 +15,29 @@ The aim of [dontkillmyapp.com](https://dontkillmyapp.com/problem) is to create a
 | Customized Doki View | In an emulator |  |
 |------------------|-------------------------|-----------------------------------------|
 | ![4](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) | ![5](https://github.com/DoubleDotLabs/doki/raw/master/art/5.png) |  |
+
+
+# How to use it
+Doki is available via JitPack, so getting it as simple as adding it as a dependency, like this:
+
+1. Add JitPack repository to your root `build.gradle` file
+```gradle
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+2. Add the dependency in your project `build.gradle` file
+```gradle
+dependencies {
+    compile('dev.doubledot:doki:{latest version}@aar') {
+        transitive = true
+    }
+}
+```
+where `{latest version}` corresponds to published version in  [![JitPack](https://jitpack.io/v/DoubleDotLabs/doki.svg)](https://jitpack.io/#DoubleDotLabs/doki)
+
+## Customization
+
+If you are using the `DokiContentView`, you can customize it by settings custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
