@@ -7,11 +7,43 @@
         android:gravity="center">
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/launch_btn"
+            android:id="@+id/launch_activity_btn"
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="launch"/>
+            android:text="Activity"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/launch_themed_activity_btn"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Themed Activity"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/launch_fragment_btn"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fragment"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/launch_dialog_btn"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dialog"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/launch_bottom_sheet_btn"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bottom Sheet"/>
 
 </LinearLayout>

@@ -7,7 +7,7 @@ import dev.doubledot.doki.api.tasks.DokiTask
 import dev.doubledot.doki.api.tasks.DokiTaskCallback
 import dev.doubledot.doki.views.DokiContentView
 
-internal class DokiActivity : AppCompatActivity() {
+open class DokiActivity : AppCompatActivity() {
 
     private val dokiContent: DokiContentView? by lazy {
         findViewById<DokiContentView?>(R.id.doki_content)

@@ -11,9 +11,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val btn: AppCompatButton? = findViewById(R.id.launch_btn)
-        btn?.setOnClickListener {
+        val activityBtn: AppCompatButton? = findViewById(R.id.launch_activity_btn)
+        activityBtn?.setOnClickListener {
             startActivity(Intent(this@MainActivity, DokiActivity::class.java))
+        }
+
+        val themedActivityBtn: AppCompatButton? = findViewById(R.id.launch_themed_activity_btn)
+        themedActivityBtn?.setOnClickListener {
+            startActivity(Intent(this@MainActivity, DokiThemedActivity::class.java))
         }
     }
 }

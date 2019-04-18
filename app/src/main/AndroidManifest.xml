@@ -22,5 +22,10 @@
         </activity>
 
         <activity android:name=".DokiActivity"/>
+
+        <activity
+                android:name=".DokiThemedActivity"
+                android:theme="@style/DefaultDokiTheme"/>
+
     </application>
 </manifest>
