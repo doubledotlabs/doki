@@ -83,6 +83,25 @@ The `DokiResponse` object will have the following values:
 
 If you are using the `DokiContentView`, you can customize it by setting custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
 
+For custom fonts and text styles, you can override the following styles:
+```xml
+<style name="Doki.Custom.Headline" parent="Doki.Headline"/>
+<style name="Doki.Custom.Overline" parent="Doki.Overline"/>
+<style name="Doki.Custom.Button" parent="Doki.Button"/>
+```
+
+And add the following attributes as you wish and with the values you want:
+```xml
+<item name="fontFamily">sans-serif</item>
+<item name="android:fontFamily">sans-serif</item>
+<item name="android:textStyle">bold</item>
+<item name="android:textAllCaps">false</item>
+<item name="android:textSize">16sp</item>
+<item name="android:letterSpacing">0.1</item>
+```
+
+**Note: don't change the parent styles, just add the attributes you want to modify**
+
 ## Previews
 
 | Default Activity | Activity w Custom Theme | Dialog                                  | Customized Doki View |
