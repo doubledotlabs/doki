@@ -1,16 +1,16 @@
-package dev.doubledot.doki.extensions
+package dev.doubledot.doki.api.extensions
 
 import android.os.Build
 import android.os.Build.VERSION_CODES.*
 
-internal val androidVersion: String
+val androidVersion: String
     get() {
         var version = Build.VERSION.RELEASE ?: ""
         if (!version.hasContent()) version = Build.VERSION.CODENAME ?: ""
         return version
     }
 
-internal val androidVersionName: String
+val androidVersionName: String
     get() {
         return when (Build.VERSION.SDK_INT) {
             JELLY_BEAN, JELLY_BEAN_MR1, JELLY_BEAN_MR2 -> "JellyBean"
@@ -24,5 +24,5 @@ internal val androidVersionName: String
         }
     }
 
-internal val fullAndroidVersion: String
+val fullAndroidVersion: String
     get() = "Android $androidVersion $androidVersionName"
