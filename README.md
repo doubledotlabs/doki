@@ -40,8 +40,6 @@ dependencies {
 }
 ```
 
-## How to use
-
 ### DokiContentView
 
 In the layout you want to include our custom view, just add it like this:
