@@ -51,7 +51,7 @@ In the layout you want to include our custom view, just add it like this:
         android:layout_height="match_parent"/>
 ```
 
-**Note: This view is not available in the `api` module
+**Note: This view is not available in the `api` module**
 
 ### DokiTask
 
