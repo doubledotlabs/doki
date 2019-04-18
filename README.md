@@ -8,10 +8,10 @@ The aim of [dontkillmyapp.com](https://dontkillmyapp.com/problem) is to create a
 
 ## Preview
 
-| Default Activity | Activity w Custom Theme | Activity w Custom Theme and Custom View |
+| Default Activity | Activity w Custom Theme | Dialog |
 |------------------|-------------------------|-----------------------------------------|
 | ![1](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![2](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![3](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) |
 
-| Dialog | In an emulator |  |
+| Customized Doki View | In an emulator |  |
 |------------------|-------------------------|-----------------------------------------|
 | ![4](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) | ![5](https://github.com/DoubleDotLabs/doki/raw/master/art/5.png) |  |
