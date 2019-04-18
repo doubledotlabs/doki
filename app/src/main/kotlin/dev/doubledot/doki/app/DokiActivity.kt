@@ -1,6 +1,7 @@
 package dev.doubledot.doki.app
 
 import android.os.Bundle
+import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import dev.doubledot.doki.api.models.DokiResponse
 import dev.doubledot.doki.api.tasks.DokiTask
@@ -17,7 +18,7 @@ open class DokiActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_doki)
+        setContentView(dokiLayout)
 
         dokiContent?.setOnCloseListener { supportFinishAfterTransition() }
 
@@ -33,4 +34,7 @@ open class DokiActivity : AppCompatActivity() {
         super.onDestroy()
         task.cancel()
     }
+
+    @LayoutRes
+    open val dokiLayout: Int = R.layout.activity_doki
 }

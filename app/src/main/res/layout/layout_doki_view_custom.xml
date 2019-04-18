@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<app:dev.doubledot.doki.views.DokiContentView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/doki_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:dokiPrimaryTextColor="#fff"
+        app:dokiSecondaryTextColor="#bdc3c7"
+        app:dokiButtonsTextColor="#2bcbba"
+        app:dokiActiveIconsColor="#eb3b5a"
+        app:dokiInactiveIconsColor="#45aaf2"
+        app:dokiExplanationTitle="The Explanation"
+        app:dokiSolutionTitle="The Solution"
+        app:dokiBackgroundColor="#34495e"
+        app:dokiHeaderBackgroundColor="#2c3e50"
+        app:dokiDividerColor="#f1c40f"
+        app:dokiImgBorderColor="#27ae60"
+        app:dokiIconsStyle="POOP"/>

@@ -14,6 +14,7 @@
         <attr name="dokiDividerColor" format="color|reference"/>
         <attr name="dokiImgBorderColor" format="color|reference"/>
         <attr name="dokiHeaderBackgroundColor" format="color|reference"/>
+        <attr name="dokiContentMinHeight" format="dimension|reference"/>
         <attr name="dokiIconsStyle" format="enum">
             <enum name="THUMB" value="0"/>
             <enum name="FACE" value="1"/>

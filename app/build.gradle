@@ -42,4 +42,6 @@ dependencies {
     implementation project(path: ':library')
     implementation Kotlin.stdlib
     implementation Libraries.appCompat
+    implementation Libraries.mdDialogs
+    implementation Libraries.material
 }

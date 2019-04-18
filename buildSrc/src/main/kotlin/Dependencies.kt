@@ -33,4 +33,6 @@ object ClassPath {
 
 object Libraries {
     const val appCompat = "androidx.appcompat:appcompat:1.0.2"
+    const val mdDialogs = "com.afollestad.material-dialogs:core:2.8.0"
+    const val material = "com.google.android.material:material:1.0.0"
 }

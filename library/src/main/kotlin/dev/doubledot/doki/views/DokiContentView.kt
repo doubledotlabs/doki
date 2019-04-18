@@ -8,10 +8,10 @@ import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.webkit.WebView
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.annotation.ColorInt
@@ -46,6 +46,7 @@ open class DokiContentView @JvmOverloads constructor(
     private val versionTextTitle: AppCompatTextView? by bind(R.id.doki_android_version_title)
     private val versionText: AppCompatTextView? by bind(R.id.doki_android_version)
 
+    private val contentLayout: FrameLayout? by bind(R.id.doki_actual_content)
     private val loadingView: ProgressBar? by bind(R.id.doki_loading_view)
     private val contentWebView: WebView? by bind(R.id.doki_web_view)
 
@@ -70,24 +71,40 @@ open class DokiContentView @JvmOverloads constructor(
         (resources.getDimension(R.dimen.twenty_four_dp) / 3F).roundToInt()
     }
 
-    private var devSolutionMessage: String = ""
-
-    var explanationTitleText: String = ""
-    var solutionTitleText: String = ""
-
+    @ColorInt
     var primaryTextColor: Int = Color.BLACK
-    var secondaryTextColor: Int = Color.BLACK
-    var buttonsTextColor: Int = context.extractColor(intArrayOf(R.attr.colorAccent))
-
-    var dividerColor: Int = Color.BLACK
-
-    var webLineHeight: Float = 1.8F
-
-    @FloatRange(from = 0.0, to = 1.0, fromInclusive = true, toInclusive = true)
-    var maxImgWidth: Float = .75F
+        set(value) {
+            field = value
+            initContent()
+        }
 
     @ColorInt
-    var imgBorderColor: Int = Color.BLACK
+    var secondaryTextColor: Int = Color.BLACK
+        set(value) {
+            field = value
+            initContent()
+        }
+
+    @ColorInt
+    var buttonsTextColor: Int = context.extractColor(intArrayOf(R.attr.colorAccent))
+        set(value) {
+            field = value
+            initContent()
+        }
+
+    @ColorInt
+    var dividerColor: Int = Color.BLACK
+        set(value) {
+            field = value
+            initContent()
+        }
+
+    @ColorInt
+    var headerBgColor: Int = 0
+        set(value) {
+            field = value
+            headerContainer?.setBackgroundColor(value)
+        }
 
     var activeIconsDrawable: Drawable? = null
         set(value) {
@@ -115,6 +132,15 @@ open class DokiContentView @JvmOverloads constructor(
             ratingView?.inactiveIconsColor = value
         }
 
+    private var devSolutionMessage: String = ""
+    var explanationTitleText: String = ""
+    var solutionTitleText: String = ""
+    var webLineHeight: Float = 1.8F
+    @FloatRange(from = 0.0, to = 1.0, fromInclusive = true, toInclusive = true)
+    var maxImgWidth: Float = .75F
+    @ColorInt
+    var imgBorderColor: Int = Color.BLACK
+
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.view_doki_content, this, true)
@@ -129,6 +155,15 @@ open class DokiContentView @JvmOverloads constructor(
         } catch (e: Exception) {
             null
         }
+
+        val defaultMinHeight = try {
+            context.resources.displayMetrics.heightPixels / 2.0F
+        } catch (e: Exception) {
+            360F.dpToPx
+        }
+        val dokiMinHeight =
+            styledAttrs?.getDimension(R.styleable.DokiContentView_dokiContentMinHeight, defaultMinHeight)
+        contentLayout?.minimumHeight = (dokiMinHeight ?: 0F).roundToInt()
 
         dividerColor =
             styledAttrs?.getColor(R.styleable.DokiContentView_dokiDividerColor, Color.parseColor("#1F000000"))
@@ -145,19 +180,6 @@ open class DokiContentView @JvmOverloads constructor(
                 R.styleable.DokiContentView_dokiButtonsTextColor,
                 context.extractColor(intArrayOf(R.attr.colorAccent))
             ) ?: context.extractColor(intArrayOf(R.attr.colorAccent))
-
-        reportBtn?.setTextColor(buttonsTextColor)
-        closeBtn?.setTextColor(buttonsTextColor)
-        loadingView?.indeterminateDrawable?.tint(buttonsTextColor)
-
-        dividerA?.setBackgroundColor(dividerColor)
-        dividerB?.setBackgroundColor(dividerColor)
-        dividerC?.setBackgroundColor(dividerColor)
-
-        activeIconsColor =
-            styledAttrs?.getColor(R.styleable.DokiContentView_dokiActiveIconsColor, Color.BLACK) ?: Color.BLACK
-        inactiveIconsColor =
-            styledAttrs?.getColor(R.styleable.DokiContentView_dokiInactiveIconsColor, Color.BLACK) ?: Color.BLACK
 
         val defaultExplanationTitleText = try {
             context.getString(R.string.explanation)
@@ -181,29 +203,24 @@ open class DokiContentView @JvmOverloads constructor(
             defaultSolutionTitleText
         }
 
-        val typedValue = TypedValue()
-        ignore { context.theme.resolveAttribute(android.R.attr.windowBackground, typedValue, true) }
-        val windowBgColor = try {
-            ContextCompat.getColor(context, typedValue.resourceId)
+        val bgColor: Int = try {
+            styledAttrs?.getColor(R.styleable.DokiContentView_dokiBackgroundColor, 0) ?: 0
+        } catch (e: Exception) {
+            0
+        }
+        setBackgroundColor(bgColor)
+
+        headerBgColor = try {
+            styledAttrs?.getColor(R.styleable.DokiContentView_dokiHeaderBackgroundColor, 0) ?: 0
         } catch (e: Exception) {
             0
         }
 
-        val bgColor: Int = try {
-            styledAttrs?.getColor(R.styleable.DokiContentView_dokiBackgroundColor, windowBgColor) ?: windowBgColor
-        } catch (e: Exception) {
-            windowBgColor
-        }
 
-        setBackgroundColor(bgColor)
-        contentWebView?.setBackgroundColor(bgColor)
-
-        val headerBgColor: Int = try {
-            styledAttrs?.getColor(R.styleable.DokiContentView_dokiHeaderBackgroundColor, windowBgColor) ?: windowBgColor
-        } catch (e: Exception) {
-            windowBgColor
-        }
-        headerContainer?.setBackgroundColor(headerBgColor)
+        activeIconsColor =
+            styledAttrs?.getColor(R.styleable.DokiContentView_dokiActiveIconsColor, Color.BLACK) ?: Color.BLACK
+        inactiveIconsColor =
+            styledAttrs?.getColor(R.styleable.DokiContentView_dokiInactiveIconsColor, Color.BLACK) ?: Color.BLACK
 
         val iconsStyleId = try {
             styledAttrs?.getInt(R.styleable.DokiContentView_dokiIconsStyle, -1) ?: -1
@@ -240,10 +257,28 @@ open class DokiContentView @JvmOverloads constructor(
         styledAttrs?.recycle()
     }
 
+    override fun setMinimumHeight(minHeight: Int) {
+        super.setMinimumHeight(minHeight)
+        contentLayout?.minimumHeight = minHeight
+    }
+
+    override fun setBackgroundColor(color: Int) {
+        super.setBackgroundColor(color)
+        contentWebView?.setBackgroundColor(color)
+    }
+
     private fun initContent() {
         initManufacturerContent()
         initDeviceContent()
         initVersionContent()
+
+        reportBtn?.setTextColor(buttonsTextColor)
+        closeBtn?.setTextColor(buttonsTextColor)
+        loadingView?.indeterminateDrawable?.tint(buttonsTextColor)
+
+        dividerA?.setBackgroundColor(dividerColor)
+        dividerB?.setBackgroundColor(dividerColor)
+        dividerC?.setBackgroundColor(dividerColor)
     }
 
     private fun initManufacturerContent() {
@@ -300,10 +335,10 @@ open class DokiContentView @JvmOverloads constructor(
                         contentWebViewMarginHorizontal
                     )
                 )
+                loadingView?.gone()
                 contentWebView?.visible()
             }
         } catch (e: Exception) {
-            Log.e("Doki", e.message)
             e.printStackTrace()
         }
     }

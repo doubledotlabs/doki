@@ -20,5 +20,16 @@ class MainActivity : AppCompatActivity() {
         themedActivityBtn?.setOnClickListener {
             startActivity(Intent(this@MainActivity, DokiThemedActivity::class.java))
         }
+
+
+        val customizedActivityBtn: AppCompatButton? = findViewById(R.id.launch_customized_activity_btn)
+        customizedActivityBtn?.setOnClickListener {
+            startActivity(Intent(this@MainActivity, DokiCustomizedActivity::class.java))
+        }
+
+        val dialogBtn: AppCompatButton? = findViewById(R.id.launch_dialog_btn)
+        dialogBtn?.setOnClickListener { DokiDialog.show(this@MainActivity) }
+
+
     }
 }
