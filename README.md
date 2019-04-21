@@ -108,7 +108,21 @@ And add the following attributes as you wish and with the values you want:
 |------------------|-------------------------|-----------------------------------------|----------------------|
 | ![The default doki activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![Doki in a custom-themed activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![Doki inside of a dialog.](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) | ![Doki with nice, fun, shiny colours.](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) |
 
-## License
+# Contributors :sparkles:
+
+* [Jahir Fiquitiva](https://jahir.xyz/) :man_technologist:
+    * [GitHub](https://github.com/jahirfiquitiva/)
+    * [Twitter](https://twitter.com/jahirfiquitiva)
+
+* [James Fenn](https://jfenn.me/) :man_technologist:
+    * [GitHub](https://github.com/fennifith/)
+    * [Twitter](https://twitter.com/fennifith)
+
+* [Eduardo Pratti](https://pratti.design) :art:
+    * [Twitter](https://twitter.com/edpratti)
+
+
+# License
 
 ```
 MIT License
