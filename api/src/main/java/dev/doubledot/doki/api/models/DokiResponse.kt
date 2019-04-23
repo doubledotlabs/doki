@@ -3,8 +3,6 @@ package dev.doubledot.doki.api.models
 import android.graphics.Color
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.annotation.ColorInt
-import androidx.annotation.FloatRange
 import dev.doubledot.doki.api.extensions.hasContent
 import dev.doubledot.doki.api.extensions.round
 
@@ -26,10 +24,10 @@ data class DokiResponse(
         explanationTitle: String = "",
         solutionTitle: String = "",
         lineHeight: Float = 1.8F,
-        @FloatRange(from = 0.0, to = 1.0, fromInclusive = true, toInclusive = true) maxImgWidth: Float = .75F,
-        @ColorInt imgBorderColor: Int = Color.BLACK,
-        @ColorInt textColor: Int = Color.BLACK,
-        @ColorInt linksColor: Int = Color.BLUE,
+        maxImgWidth: Float = .75F,
+        imgBorderColor: Int = Color.BLACK,
+        textColor: Int = Color.BLACK,
+        linksColor: Int = Color.BLUE,
         marginTopPx: Int = 0,
         marginRightPx: Int = 0,
         marginBottomPx: Int = marginTopPx,

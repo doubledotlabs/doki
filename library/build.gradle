@@ -1,14 +1,14 @@
-apply plugin: Android.libPlugin
-apply plugin: Kotlin.androidPlugin
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion Doki.compileSdkVersion
+    compileSdkVersion meta.sdk
 
     defaultConfig {
-        minSdkVersion Doki.minSdkVersion
-        targetSdkVersion Doki.compileSdkVersion
-        versionCode Doki.versionCode
-        versionName Doki.versionName
+        minSdkVersion meta.minSdk
+        targetSdkVersion meta.sdk
+        versionCode meta.versionCode
+        versionName meta.versionName
         vectorDrawables.useSupportLibrary = true
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         consumerProguardFiles 'proguard-rules.pro'
@@ -37,9 +37,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
+    implementation "androidx.appcompat:appcompat:$deps.android.appcompat"
+    implementation "com.google.android.material:material:$deps.android.material"
+
     api project(path: ':api')
-    implementation Kotlin.stdlib
-    implementation Libraries.appCompat
 }
 
+apply from: '../versions.gradle'
 apply from: '../lib-artifacts.gradle'

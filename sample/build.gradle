@@ -1,15 +1,15 @@
-apply plugin: Android.appPlugin
-apply plugin: Kotlin.androidPlugin
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion Doki.compileSdkVersion
+    compileSdkVersion meta.sdk
 
     defaultConfig {
-        applicationId Doki.appId
-        minSdkVersion Doki.minSdkVersion
-        targetSdkVersion Doki.compileSdkVersion
-        versionCode Doki.versionCode
-        versionName Doki.versionName
+        applicationId "${meta.groupId}.app"
+        minSdkVersion meta.minSdk
+        targetSdkVersion meta.sdk
+        versionCode meta.versionCode
+        versionName meta.versionName
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -35,9 +35,15 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
+
+    implementation "androidx.appcompat:appcompat:$deps.android.appcompat"
+    implementation "com.google.android.material:material:$deps.android.material"
+
+    implementation "com.afollestad.material-dialogs:core:$deps.materialdialogs"
+
     implementation project(path: ':library')
-    implementation Kotlin.stdlib
-    implementation Libraries.appCompat
-    implementation Libraries.mdDialogs
-    implementation Libraries.material
 }
+
+apply from: '../versions.gradle'
