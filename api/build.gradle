@@ -37,6 +37,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
+
+    implementation "com.squareup.retrofit2:retrofit:$deps.retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$deps.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$deps.retrofit"
+
+    implementation "io.reactivex.rxjava2:rxandroid:$deps.rxandroid"
 }
 
 apply from: '../versions.gradle'

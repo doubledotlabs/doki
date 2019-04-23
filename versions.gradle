@@ -13,5 +13,7 @@ ext.deps = [
         appcompat: '1.0.2',
         material: '1.0.0'
     ],
+    retrofit: '2.3.0',
+    rxandroid: '2.1.1',
     materialdialogs: '2.8.0'
 ]

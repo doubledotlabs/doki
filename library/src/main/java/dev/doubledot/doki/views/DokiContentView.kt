@@ -25,7 +25,6 @@ import dev.doubledot.doki.api.extensions.fullAndroidVersion
 import dev.doubledot.doki.api.extensions.hasContent
 import dev.doubledot.doki.api.models.DokiResponse
 import dev.doubledot.doki.extensions.*
-import org.jetbrains.anko.runOnUiThread
 import kotlin.math.roundToInt
 
 
@@ -315,32 +314,26 @@ open class DokiContentView @JvmOverloads constructor(
     fun setContent(content: DokiResponse?) {
         content ?: return
 
-        try {
-            context.runOnUiThread {
-                devSolutionMessage = content.devSolution.orEmpty()
-                reportBtn?.visibleIf(devSolutionMessage.hasContent())
-                ratingView?.rating = content.award
-                ratingContainer?.visibleIf(content.award > 0)
+        devSolutionMessage = content.dev_solution.orEmpty()
+        reportBtn?.visibleIf(devSolutionMessage.hasContent())
+        ratingView?.rating = content.award
+        ratingContainer?.visibleIf(content.award > 0)
 
-                contentWebView?.loadHTML(
-                    content.getHTMLContent(
-                        explanationTitleText,
-                        solutionTitleText,
-                        webLineHeight,
-                        maxImgWidth,
-                        imgBorderColor,
-                        primaryTextColor,
-                        buttonsTextColor,
-                        contentWebViewMarginVertical,
-                        contentWebViewMarginHorizontal
-                    )
-                )
-                loadingView?.gone()
-                contentWebView?.visible()
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
+        contentWebView?.loadHTML(
+            content.getHTMLContent(
+                explanationTitleText,
+                solutionTitleText,
+                webLineHeight,
+                maxImgWidth,
+                imgBorderColor,
+                primaryTextColor,
+                buttonsTextColor,
+                contentWebViewMarginVertical,
+                contentWebViewMarginHorizontal
+            )
+        )
+        loadingView?.gone()
+        contentWebView?.visible()
     }
 
     fun setOnReportListener(listener: (view: View?, message: String) -> Unit = { _, _ -> }) {

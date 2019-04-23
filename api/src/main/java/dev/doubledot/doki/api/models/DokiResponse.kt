@@ -8,13 +8,13 @@ import dev.doubledot.doki.api.extensions.round
 
 data class DokiResponse(
     val name: String,
-    val manufacturers: String,
+    val manufacturer: Array<String>,
     val url: String,
     val award: Int,
     val position: Int,
     val explanation: String,
-    val userSolution: String,
-    val devSolution: String?
+    val user_solution: String,
+    val dev_solution: String?
 ) : Parcelable {
 
     private fun Int.toRgbaString(): String =
@@ -40,7 +40,7 @@ data class DokiResponse(
                 "color: ${textColor.toRgbaString()}; line-height: ${lineHeight}em;} a{color: ${linksColor.toRgbaString()}}" +
                 " img{display: block;height: auto;max-width: ${maxImgWidth * 100}%;" +
                 "margin-left: auto;margin-right: auto;border: 1px solid ${imgBorderColor.toRgbaString()}}</style>" +
-                "</head><body>$actualExplanationTitle$explanation<br>$actualSolutionTitle$userSolution</body></html>"
+                "</head><body>$actualExplanationTitle$explanation<br>$actualSolutionTitle$user_solution</body></html>"
     }
 
     override fun equals(other: Any?): Boolean {
@@ -50,7 +50,7 @@ data class DokiResponse(
 
     override fun hashCode(): Int {
         var result = name.hashCode()
-        result = 31 * result + manufacturers.hashCode()
+        result = 31 * result + (manufacturer.firstOrNull()?.hashCode() ?: 0)
         result = 31 * result + url.hashCode()
         result = 31 * result + award.hashCode()
         return result
@@ -58,7 +58,7 @@ data class DokiResponse(
 
     constructor(parcel: Parcel) : this(
         parcel.readString().orEmpty(),
-        parcel.readString().orEmpty(),
+        parcel.createStringArray() ?: arrayOf<String>(),
         parcel.readString().orEmpty(),
         parcel.readInt(),
         parcel.readInt(),
@@ -69,13 +69,13 @@ data class DokiResponse(
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(name)
-        parcel.writeString(manufacturers)
+        parcel.writeStringArray(manufacturer)
         parcel.writeString(url)
         parcel.writeInt(award)
         parcel.writeInt(position)
         parcel.writeString(explanation)
-        parcel.writeString(userSolution)
-        parcel.writeString(devSolution)
+        parcel.writeString(user_solution)
+        parcel.writeString(dev_solution)
     }
 
     override fun describeContents(): Int = 0

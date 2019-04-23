@@ -44,7 +44,7 @@ class DokiDialog : DialogFragment() {
             ?.let {
                 it.setContent(response)
                 it.setButtonsVisibility(false)
-                if (response?.devSolution.orEmpty().trim().isNotEmpty()) {
+                if (response?.dev_solution.orEmpty().trim().isNotEmpty()) {
                     actualDialog.negativeButton(R.string.report) {
                         // TODO: Handle report button press
                         dismiss()

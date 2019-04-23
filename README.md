@@ -71,13 +71,13 @@ task.execute()
 
 The `DokiResponse` object will have the following values:
 * `name`: The exact name of device manufacturer
-* `manufacturers`: A comma separated string with multiple manufacturers (if available)
+* `manufacturer`: An array with multiple manufacturers (if available)
 * `url`: The url to open the [Don't Kill My App website](https://dontkillmyapp.com/) for the specific manufacturer
 * `award`: An integer from 1 to 5 inclusive which is also the rating or score provided by the site. [More info](https://dontkillmyapp.com/about_score)
 * `position`: The position to show this manufacturer. Used in [Don't Kill My App website](https://dontkillmyapp.com/)
 * `explanation`: The explanation as to why common issues might occur
-* `userSolution`: The solution users can follow to prevent the issues explained
-* `devSolution`: The solution you (developers) can follow to improve the app experience
+* `user_solution`: The solution users can follow to prevent the issues explained
+* `dev_solution`: The solution you (developers) can follow to improve the app experience
 
 ## Customization
 

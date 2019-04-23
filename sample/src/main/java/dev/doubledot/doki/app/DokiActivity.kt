@@ -1,6 +1,7 @@
 package dev.doubledot.doki.app
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import dev.doubledot.doki.api.models.DokiResponse

@@ -1,71 +1,44 @@
 package dev.doubledot.doki.api.tasks
 
-import dev.doubledot.doki.api.extensions.*
+import android.os.Build
+import dev.doubledot.doki.api.extensions.DONT_KILL_MY_APP_FALLBACK_MANUFACTURER
 import dev.doubledot.doki.api.models.DokiResponse
-import dev.doubledot.doki.api.remote.DokiRequest
-import org.jetbrains.anko.doAsync
-import org.json.JSONObject
-import java.util.concurrent.Future
+import dev.doubledot.doki.api.remote.DokiApiService
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import retrofit2.HttpException
 
 @Suppress("MemberVisibilityCanBePrivate")
 open class DokiTask {
-    private var task: Future<*>? = null
 
-    var allowInterruptionOnCancel: Boolean = true
+    val dokiApiService by lazy {
+        DokiApiService.create()
+    }
 
-    var connectTimeout: Int = REQUESTS_CONNECT_TIMEOUT
-    var readTimeout: Int = REQUESTS_READ_TIMEOUT
+    var disposable: Disposable? = null
     var callback: DokiTaskCallback? = null
+    var shouldFallback : Boolean = true
 
-    fun execute() {
-        if (task != null) cancel()
-        callback?.onStart()
-
-        task = doAsync {
-            try {
-                val jsonResponse = DokiRequest.requestJson(DONT_KILL_MY_APP_ENDPOINT, connectTimeout, readTimeout)
-                try {
-                    val json = JSONObject(jsonResponse)
-
-                    val name = json.optString(DKMA_NAME_JSON_KEY, "").orEmpty()
-                    val manufacturers = json.optJSONArray(DKMA_MANUFACTURER_JSON_KEY).join(",")
-                    val url = "$DONT_KILL_MY_APP_BASE_URL${json.optString(DKMA_URL_JSON_KEY, "").orEmpty()}"
-                    val award = json.optInt(DKMA_AWARD_JSON_KEY)
-                    val position = json.optInt(DKMA_POSITION_JSON_KEY)
-                    val explanation = json.optString(DKMA_EXPLANATION_JSON_KEY, "").orEmpty()
-                    val userSolution = json.optString(DKMA_USER_SOLUTION_JSON_KEY, "").orEmpty()
-                    val devSolution = json.optString(DKMA_DEV_SOLUTION_JSON_KEY, "").orEmpty()
-                    val actualDevSolution: String? = if (devSolution.hasContent()) {
-                        if (devSolution.contains(DKMA_NO_DEV_SOLUTION_MSG, true)) null else devSolution
-                    } else null
-
-                    var response: DokiResponse? = null
-                    if (name.hasContent() && manufacturers.hasContent() &&
-                        explanation.hasContent() && userSolution.hasContent()
-                    ) {
-                        response = DokiResponse(
-                            name,
-                            manufacturers,
-                            url,
-                            award,
-                            position,
-                            explanation,
-                            userSolution,
-                            actualDevSolution
-                        )
-                    }
-                    callback?.onSuccess(response)
-                } catch (e: Exception) {
-                    callback?.onError(e)
+    fun execute(manufacturer : String = Build.MANUFACTURER.toLowerCase().replace(" ", "-")) {
+        disposable = dokiApiService.getManufacturer(manufacturer)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result : DokiResponse -> callback?.onSuccess(result) },
+                { error ->
+                    if ((error as? HttpException)?.code() == 404 && shouldFallback) {
+                        execute(DONT_KILL_MY_APP_FALLBACK_MANUFACTURER)
+                        shouldFallback = false
+                    } else callback?.onError(error)
                 }
-            } catch (e: Exception) {
-                callback?.onError(e)
-            }
-        }
+            )
+
+        callback?.onStart()
     }
 
     fun cancel() {
-        task?.cancel(allowInterruptionOnCancel)
-        task = null
+        disposable?.dispose()
+        disposable = null
     }
 }
