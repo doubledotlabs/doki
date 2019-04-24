@@ -9,18 +9,18 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.afollestad.materialdialogs.callbacks.onShow
 import com.afollestad.materialdialogs.customview.customView
 import com.afollestad.materialdialogs.customview.getCustomView
-import dev.doubledot.doki.api.models.DokiResponse
-import dev.doubledot.doki.api.tasks.DokiTask
-import dev.doubledot.doki.api.tasks.DokiTaskCallback
+import dev.doubledot.doki.api.models.DokiManufacturer
+import dev.doubledot.doki.api.tasks.DokiApi
+import dev.doubledot.doki.api.tasks.DokiApiCallback
 import dev.doubledot.doki.views.DokiContentView
 
 class DokiDialog : DialogFragment() {
 
-    private val task: DokiTask by lazy { DokiTask() }
+    private val api: DokiApi by lazy { DokiApi() }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        task.callback = object : DokiTaskCallback {
-            override fun onSuccess(response: DokiResponse?) {
+        api.callback = object : DokiApiCallback {
+            override fun onSuccess(response: DokiManufacturer?) {
                 updateContent(response)
             }
         }
@@ -30,14 +30,14 @@ class DokiDialog : DialogFragment() {
 
         return MaterialDialog(context!!).show {
             customView(view = dokiCustomView)
-            onShow { task.execute() }
+            onShow { api.getManufacturer() }
             positiveButton(R.string.close) {
                 dismiss()
             }
         }
     }
 
-    private fun updateContent(response: DokiResponse?) {
+    private fun updateContent(response: DokiManufacturer?) {
         val actualDialog = (dialog as? MaterialDialog)
         actualDialog?.getCustomView()
             ?.findViewById<DokiContentView?>(R.id.doki_content)
@@ -55,7 +55,7 @@ class DokiDialog : DialogFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        task.cancel()
+        api.cancel()
     }
 
     fun show(context: FragmentActivity, tag: String = DOKI_DIALOG_TAG) {

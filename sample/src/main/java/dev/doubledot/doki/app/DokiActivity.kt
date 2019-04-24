@@ -1,12 +1,11 @@
 package dev.doubledot.doki.app
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
-import dev.doubledot.doki.api.models.DokiResponse
-import dev.doubledot.doki.api.tasks.DokiTask
-import dev.doubledot.doki.api.tasks.DokiTaskCallback
+import dev.doubledot.doki.api.models.DokiManufacturer
+import dev.doubledot.doki.api.tasks.DokiApi
+import dev.doubledot.doki.api.tasks.DokiApiCallback
 import dev.doubledot.doki.views.DokiContentView
 
 open class DokiActivity : AppCompatActivity() {
@@ -15,7 +14,7 @@ open class DokiActivity : AppCompatActivity() {
         findViewById<DokiContentView?>(R.id.doki_content)
     }
 
-    private val task: DokiTask by lazy { DokiTask() }
+    private val api: DokiApi by lazy { DokiApi() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,17 +22,17 @@ open class DokiActivity : AppCompatActivity() {
 
         dokiContent?.setOnCloseListener { supportFinishAfterTransition() }
 
-        task.callback = object : DokiTaskCallback {
-            override fun onSuccess(response: DokiResponse?) {
+        api.callback = object : DokiApiCallback {
+            override fun onSuccess(response: DokiManufacturer?) {
                 dokiContent?.setContent(response)
             }
         }
-        task.execute()
+        api.getManufacturer()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        task.cancel()
+        api.cancel()
     }
 
     @LayoutRes

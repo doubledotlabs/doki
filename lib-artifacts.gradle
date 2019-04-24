@@ -1,5 +1,5 @@
 apply plugin: 'com.github.dcendents.android-maven'
-group = 'dev.doubledot'
+group = 'com.github.DoubleDotLabs.doki'
 
 // build a jar with source files
 task sourcesJar(type: Jar) {

@@ -7,10 +7,11 @@ ext.meta = [
 ]
 
 ext.deps = [
-    buildtools: '3.3.2',
-    kotlin: '1.3.20',
+    buildtools: '3.4.0',
+    kotlin: '1.3.21',
     android: [
         appcompat: '1.0.2',
+        lifecycle: '2.1.0-alpha04',
         material: '1.0.0'
     ],
     retrofit: '2.3.0',

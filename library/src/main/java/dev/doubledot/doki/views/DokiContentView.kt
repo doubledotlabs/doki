@@ -10,10 +10,10 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.webkit.WebView
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ProgressBar
+import androidx.databinding.DataBindingUtil
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
@@ -23,8 +23,11 @@ import androidx.core.content.ContextCompat
 import dev.doubledot.doki.R
 import dev.doubledot.doki.api.extensions.fullAndroidVersion
 import dev.doubledot.doki.api.extensions.hasContent
-import dev.doubledot.doki.api.models.DokiResponse
+import dev.doubledot.doki.api.models.DokiManufacturer
 import dev.doubledot.doki.extensions.*
+import dev.doubledot.doki.databinding.ViewDokiContentBinding
+import dev.doubledot.doki.models.Device
+import dev.doubledot.doki.models.DokiResponse
 import kotlin.math.roundToInt
 
 
@@ -34,33 +37,6 @@ open class DokiContentView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
-
-    private val manufacturerTextTitle: AppCompatTextView? by bind(R.id.doki_manufacturer_title)
-    private val ratingTextTitle: AppCompatTextView? by bind(R.id.doki_rating_title)
-    private val manufacturerText: AppCompatTextView? by bind(R.id.doki_manufacturer)
-
-    private val deviceTextTitle: AppCompatTextView? by bind(R.id.doki_device_title)
-    private val deviceText: AppCompatTextView? by bind(R.id.doki_device)
-
-    private val versionTextTitle: AppCompatTextView? by bind(R.id.doki_android_version_title)
-    private val versionText: AppCompatTextView? by bind(R.id.doki_android_version)
-
-    private val contentLayout: FrameLayout? by bind(R.id.doki_actual_content)
-    private val loadingView: ProgressBar? by bind(R.id.doki_loading_view)
-    private val contentWebView: WebView? by bind(R.id.doki_web_view)
-
-    private val ratingContainer: LinearLayout? by bind(R.id.doki_rating_container)
-    private val ratingView: DokiRatingView? by bind(R.id.doki_rating)
-
-    private val headerContainer: LinearLayout? by bind(R.id.doki_details_header)
-
-    private val btnsContainer: View? by bind(R.id.doki_btns_container)
-    private val reportBtn: AppCompatTextView? by bind(R.id.doki_report_btn)
-    private val closeBtn: AppCompatTextView? by bind(R.id.doki_close_btn)
-
-    private val dividerA: View? by bind(R.id.doki_divider_a)
-    private val dividerB: View? by bind(R.id.doki_divider_b)
-    private val dividerC: View? by bind(R.id.doki_divider_c)
 
     private val contentWebViewMarginVertical: Int by lazy {
         (resources.getDimension(R.dimen.twelve_dp) / 3F).roundToInt()
@@ -102,33 +78,33 @@ open class DokiContentView @JvmOverloads constructor(
     var headerBgColor: Int = 0
         set(value) {
             field = value
-            headerContainer?.setBackgroundColor(value)
+            //headerContainer?.setBackgroundColor(value)
         }
 
     var activeIconsDrawable: Drawable? = null
         set(value) {
             field = value
-            ratingView?.activeIconsDrawable = value
+            //ratingView?.activeIconsDrawable = value
         }
 
     var inactiveIconsDrawable: Drawable? = null
         set(value) {
             field = value
-            ratingView?.inactiveIconsDrawable = value
+            //ratingView?.inactiveIconsDrawable = value
         }
 
     @ColorInt
     var activeIconsColor: Int = Color.BLACK
         set(value) {
             field = value
-            ratingView?.activeIconsColor = value
+            //ratingView?.activeIconsColor = value
         }
 
     @ColorInt
     var inactiveIconsColor: Int = Color.BLACK
         set(value) {
             field = value
-            ratingView?.inactiveIconsColor = value
+            //ratingView?.inactiveIconsColor = value
         }
 
     private var devSolutionMessage: String = ""
@@ -140,9 +116,16 @@ open class DokiContentView @JvmOverloads constructor(
     @ColorInt
     var imgBorderColor: Int = Color.BLACK
 
+    val binding : ViewDokiContentBinding
+
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.view_doki_content, this, true)
+        val v = inflater.inflate(R.layout.view_doki_content, this, true)
+        binding = ViewDokiContentBinding.bind(v).apply {
+            device = Device()
+            response = DokiResponse()
+        }
+
         initFromAttrs(attrs)
         initContent()
     }
@@ -162,7 +145,7 @@ open class DokiContentView @JvmOverloads constructor(
         }
         val dokiMinHeight =
             styledAttrs?.getDimension(R.styleable.DokiContentView_dokiContentMinHeight, defaultMinHeight)
-        contentLayout?.minimumHeight = (dokiMinHeight ?: 0F).roundToInt()
+        //contentLayout?.minimumHeight = (dokiMinHeight ?: 0F).roundToInt()
 
         dividerColor =
             styledAttrs?.getColor(R.styleable.DokiContentView_dokiDividerColor, Color.parseColor("#1F000000"))
@@ -258,122 +241,73 @@ open class DokiContentView @JvmOverloads constructor(
 
     override fun setMinimumHeight(minHeight: Int) {
         super.setMinimumHeight(minHeight)
-        contentLayout?.minimumHeight = minHeight
+        //contentLayout?.minimumHeight = minHeight
     }
 
     override fun setBackgroundColor(color: Int) {
         super.setBackgroundColor(color)
-        contentWebView?.setBackgroundColor(color)
     }
 
     private fun initContent() {
-        initManufacturerContent()
-        initDeviceContent()
-        initVersionContent()
 
-        reportBtn?.setTextColor(buttonsTextColor)
-        closeBtn?.setTextColor(buttonsTextColor)
-        loadingView?.indeterminateDrawable?.tint(buttonsTextColor)
+        //reportBtn?.setTextColor(buttonsTextColor)
+        //closeBtn?.setTextColor(buttonsTextColor)
+        //loadingView?.indeterminateDrawable?.tint(buttonsTextColor)
 
-        dividerA?.setBackgroundColor(dividerColor)
-        dividerB?.setBackgroundColor(dividerColor)
-        dividerC?.setBackgroundColor(dividerColor)
+        //dividerA?.setBackgroundColor(dividerColor)
+        //dividerB?.setBackgroundColor(dividerColor)
+        //dividerC?.setBackgroundColor(dividerColor)
     }
 
-    private fun initManufacturerContent() {
-        manufacturerTextTitle?.setTextColor(secondaryTextColor)
-        ratingTextTitle?.setTextColor(secondaryTextColor)
-        manufacturerText?.setTextColor(primaryTextColor)
-        manufacturerText?.text = Build.MANUFACTURER
-    }
-
-    private fun initDeviceContent() {
-        deviceTextTitle?.setTextColor(secondaryTextColor)
-        deviceText?.setTextColor(primaryTextColor)
-        deviceText?.text = Build.MODEL
-    }
-
-    private fun initVersionContent() {
-        versionTextTitle?.setTextColor(secondaryTextColor)
-        versionText?.setTextColor(primaryTextColor)
-        versionText?.text = fullAndroidVersion
-    }
-
-    private fun initWebViewScrollListener() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            contentWebView?.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-                if (scrollY > oldScrollY) {
-                    Log.d("Doki", "Scrolled Up")
-                } else if (scrollY < oldScrollY) {
-                    Log.d("Doki", "Scrolled Down")
-                }
-            }
-        }
-    }
-
-    fun setContent(content: DokiResponse?) {
+    fun setContent(content: DokiManufacturer?) {
         content ?: return
 
-        devSolutionMessage = content.dev_solution.orEmpty()
-        reportBtn?.visibleIf(devSolutionMessage.hasContent())
-        ratingView?.rating = content.award
-        ratingContainer?.visibleIf(content.award > 0)
+        //devSolutionMessage = content.dev_solution.orEmpty()
+        //reportBtn?.visibleIf(devSolutionMessage.hasContent())
+        //ratingView?.rating = content.award
+        //ratingContainer?.visibleIf(content.award > 0)
 
-        contentWebView?.loadHTML(
-            content.getHTMLContent(
-                explanationTitleText,
-                solutionTitleText,
-                webLineHeight,
-                maxImgWidth,
-                imgBorderColor,
-                primaryTextColor,
-                buttonsTextColor,
-                contentWebViewMarginVertical,
-                contentWebViewMarginHorizontal
-            )
-        )
-        loadingView?.gone()
-        contentWebView?.visible()
+        binding.response?.manufacturer = content
     }
 
     fun setOnReportListener(listener: (view: View?, message: String) -> Unit = { _, _ -> }) {
-        reportBtn?.setOnClickListener { listener(it, devSolutionMessage) }
+        //reportBtn?.setOnClickListener { listener(it, devSolutionMessage) }
     }
 
     fun setOnCloseListener(listener: (view: View?) -> Unit = { _ -> }) {
-        closeBtn?.setOnClickListener { listener(it) }
+        //closeBtn?.setOnClickListener { listener(it) }
     }
 
     fun setActiveIconRes(@DrawableRes resId: Int) {
-        ratingView?.activeIconsDrawable = try {
-            ContextCompat.getDrawable(context, resId)
-        } catch (e: Exception) {
-            null
-        }
+        //ratingView?.activeIconsDrawable = try {
+        //    ContextCompat.getDrawable(context, resId)
+        //} catch (e: Exception) {
+        //    null
+        //}
     }
 
     fun setInactiveIconRes(@DrawableRes resId: Int) {
-        ratingView?.inactiveIconsDrawable = try {
-            ContextCompat.getDrawable(context, resId)
-        } catch (e: Exception) {
-            null
-        }
+        //ratingView?.inactiveIconsDrawable = try {
+        //    ContextCompat.getDrawable(context, resId)
+        //} catch (e: Exception) {
+        //    null
+        //}
     }
 
     fun setActiveIconsColorRes(@ColorRes resId: Int) {
-        ratingView?.activeIconsColor = try {
-            ContextCompat.getColor(context, resId)
-        } catch (e: Exception) {
-            Color.BLACK
-        }
+        //ratingView?.activeIconsColor = try {
+        //    ContextCompat.getColor(context, resId)
+        //} catch (e: Exception) {
+        //    Color.BLACK
+        //}
     }
 
     fun setInactiveIconsColorRes(@ColorRes resId: Int) {
-        ratingView?.inactiveIconsColor = try {
-            ContextCompat.getColor(context, resId)
-        } catch (e: Exception) {
-            Color.BLACK
-        }
+        //ratingView?.inactiveIconsColor = try {
+        //    ContextCompat.getColor(context, resId)
+        //} catch (e: Exception) {
+        //    Color.BLACK
+        //}
     }
 
     fun setIconsStyle(style: DokiRatingView.Style) {
@@ -390,6 +324,6 @@ open class DokiContentView @JvmOverloads constructor(
     }
 
     fun setButtonsVisibility(visible: Boolean) {
-        btnsContainer?.visibleIf(visible)
+        //btnsContainer?.visibleIf(visible)
     }
 }

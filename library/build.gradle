@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion meta.sdk
@@ -33,15 +35,28 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$deps.kotlin"
+
     implementation "androidx.appcompat:appcompat:$deps.android.appcompat"
     implementation "com.google.android.material:material:$deps.android.material"
 
+    implementation "androidx.lifecycle:lifecycle-runtime:$deps.android.lifecycle"
+    implementation "androidx.lifecycle:lifecycle-extensions:$deps.android.lifecycle"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$deps.android.lifecycle"
+
     api project(path: ':api')
+}
+
+kapt {
+    generateStubs = true
 }
 
 apply from: '../versions.gradle'
