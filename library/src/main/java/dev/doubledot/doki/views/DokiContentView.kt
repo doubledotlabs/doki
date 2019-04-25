@@ -40,15 +40,15 @@ class DokiContentView @JvmOverloads constructor(
     private val contentLayout: FrameLayout? by bind(R.id.doki_actual_content)
     private val loadingView: ProgressBar? by bind(R.id.doki_loading_view)
 
-    private val manufacturerRatingContainer : View? by bind(R.id.manufacturerRatingContainer)
+    private val manufacturerRatingContainer : View? = null
     private val manufacturerRatingHeader: TextView? by bind(R.id.manufacturerRatingHeader)
     private val manufacturerRating: DokiRatingView? by bind(R.id.manufacturerRating)
 
     //private val headerContainer: LinearLayout? by bind(R.id.doki_details_header)
 
     private val buttonContainer: View? by bind(R.id.buttonContainer)
-    private val reportBtn: AppCompatTextView? by bind(R.id.buttonReport)
-    private val closeBtn: AppCompatTextView? by bind(R.id.buttonClose)
+    private val reportBtn: TextView? by bind(R.id.buttonReport)
+    private val closeBtn: TextView? by bind(R.id.buttonClose)
 
     private val divider1: View? by bind(R.id.divider1)
     private val divider2: View? by bind(R.id.divider2)
