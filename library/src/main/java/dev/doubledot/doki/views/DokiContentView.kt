@@ -12,10 +12,11 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import com.google.android.material.appbar.AppBarLayout
 import dev.doubledot.doki.R
+import dev.doubledot.doki.api.extensions.DONT_KILL_MY_APP_DEFAULT_MANUFACTURER
 import dev.doubledot.doki.api.models.DokiManufacturer
+import dev.doubledot.doki.api.tasks.DokiApi
+import dev.doubledot.doki.api.tasks.DokiApiCallback
 import dev.doubledot.doki.extensions.*
 import dev.doubledot.doki.models.Device
 
@@ -25,6 +26,8 @@ class DokiContentView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyle: Int = 0
 ) : LinearLayout(context, attrs, defStyle) {
+
+    private val api: DokiApi by lazy { DokiApi() }
 
     // View bindings ---------------------------------------
 
@@ -292,12 +295,18 @@ class DokiContentView @JvmOverloads constructor(
         styledAttrs?.recycle()
     }
 
-    fun setContent(content: DokiManufacturer?) {
-        manufacturer = content
+    fun loadContent(manufacturerId: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER) {
+        api.callback = object: DokiApiCallback {
+            override fun onSuccess(response: DokiManufacturer?) {
+                manufacturer = response
+            }
+        }
+        api.getManufacturer(manufacturerId)
     }
 
-    fun setOnReportListener(listener: (view: View?, message: String) -> Unit = { _, _ -> }) {
-        reportBtn?.setOnClickListener { listener(it, devSolutionMessage) }
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        api.cancel()
     }
 
     fun setOnCloseListener(listener: (view: View?) -> Unit = { _ -> }) {
@@ -306,6 +315,7 @@ class DokiContentView @JvmOverloads constructor(
 
     fun setButtonsVisibility(visible: Boolean) {
         buttonContainer?.visibleIf(visible)
+        divider2?.visibleIf(visible)
     }
 
     private fun getStyledIconsStyle(attrs : TypedArray?) : DokiRatingView.Style? {

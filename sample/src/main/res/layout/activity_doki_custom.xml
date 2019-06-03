@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <include layout="@layout/layout_doki_view_custom"/>
+    <app:dev.doubledot.doki.views.DokiContentView
+            android:id="@+id/doki_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:dokiPrimaryTextColor="#fff"
+            app:dokiSecondaryTextColor="#bdc3c7"
+            app:dokiButtonsTextColor="#2bcbba"
+            app:dokiActiveIconsColor="#eb3b5a"
+            app:dokiInactiveIconsColor="#45aaf2"
+            app:dokiExplanationTitle="The Explanation"
+            app:dokiSolutionTitle="The Solution"
+            app:dokiBackgroundColor="#34495e"
+            app:dokiHeaderBackgroundColor="#2c3e50"
+            app:dokiDividerColor="#f1c40f"
+            app:dokiImgBorderColor="#27ae60"
+            app:dokiActiveIconsDrawable="@drawable/ic_alarm"
+            app:dokiInactiveIconsDrawable="@drawable/ic_alarm_outline"
+    />
+
+    <!--
+        Additionally, if you don't want to set custom drawables for active and inactive icons,
+        you can set any of the 4 included styles using this attribute:
+        app:dokiIconsStyle="..."
+        Available styles are: THUMB, FACE, POOP and TRASH
+    -->
+
 
 </LinearLayout>
