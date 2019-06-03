@@ -50,7 +50,6 @@ of the Doki API that is quick and easy to set up and use. Simply call
 
 <details open>
 <summary>Kotlin</summary>
-<br>
 <pre>
 DokiActivity.start(context = ...)
 </pre>
@@ -58,7 +57,6 @@ DokiActivity.start(context = ...)
 
 <details>
 <summary>Java</summary>
-<br>
 <pre>
 DokiActivity.start(context);
 </pre>
@@ -87,7 +85,6 @@ you must call `loadContent()` on the view.
 
 <details open>
 <summary>Kotlin</summary>
-<br>
 <pre>
 val dokiView : DokiContentView? = findViewById(R.id.doki_content)<br>
 dokiView?.loadContent()
@@ -96,7 +93,6 @@ dokiView?.loadContent()
 
 <details>
 <summary>Java</summary>
-<br>
 <pre>
 DokiContentView dokiView = findViewById(R.id.doki_content);<br>
 if (dokiView != null) dokiView.loadContent();
