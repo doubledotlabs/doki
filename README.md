@@ -42,9 +42,38 @@ dependencies {
 }
 ```
 
+### DokiActivity
+
+The `DokiActivity` provides you with a default uncustomized implementation
+of the Doki API that is quick and easy to set up and use. Simply call
+`DokiActivity.start(...)` to open it.
+
+<details open>
+<summary>Kotlin</summary>
+<br>
+<pre>
+DokiActivity.start(context = ...)
+</pre>
+</details>
+
+<details>
+<summary>Java</summary>
+<br>
+<pre>
+DokiActivity.start(context);
+</pre>
+</details>
+
+Alternatively, you can use `DokiActivity.newIntent(...)` to create an
+Intent to open it.
+
 ### DokiContentView
 
+`DokiContentView` is the custom view that `DokiActivity` is based on. Implementing
+it allows for greater customization and use in more complex scenarios.
+
 In the layout you want to include our custom view, just add it like this:
+
 ```xml
 <dev.doubledot.doki.views.DokiContentView
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -53,39 +82,35 @@ In the layout you want to include our custom view, just add it like this:
         android:layout_height="match_parent"/>
 ```
 
-**Note: This view is not available in the `api` module**
+In order to fetch content from the [Don't Kill My App website](https://dontkillmyapp.com/),
+you must call `loadContent()` on the view.
 
-### DokiTask
+<details open>
+<summary>Kotlin</summary>
+<br>
+<pre>
+val dokiView : DokiContentView? = findViewById(R.id.doki_content)<br>
+dokiView?.loadContent()
+</pre>
+</details>
 
-You must run this task in order to get the content from the [Don't Kill My App website](https://dontkillmyapp.com/)
-```kotlin
-private val task: DokiTask by lazy { DokiTask() }
-
-...
-
-task.callback = object : DokiTaskCallback {
-    override fun onSuccess(response: DokiResponse?) {
-        myDokiView?.setContent(response)
-    }
-}
-task.execute()
-```
-
-The `DokiResponse` object will have the following values:
-* `name`: The exact name of device manufacturer
-* `manufacturer`: An array with multiple manufacturers (if available)
-* `url`: The url to open the [Don't Kill My App website](https://dontkillmyapp.com/) for the specific manufacturer
-* `award`: An integer from 1 to 5 inclusive which is also the rating or score provided by the site. [More info](https://dontkillmyapp.com/about_score)
-* `position`: The position to show this manufacturer. Used in [Don't Kill My App website](https://dontkillmyapp.com/)
-* `explanation`: The explanation as to why common issues might occur
-* `user_solution`: The solution users can follow to prevent the issues explained
-* `dev_solution`: The solution you (developers) can follow to improve the app experience
+<details>
+<summary>Java</summary>
+<br>
+<pre>
+DokiContentView dokiView = findViewById(R.id.doki_content);<br>
+if (dokiView != null) dokiView.loadContent();
+</pre>
+</details>
 
 ## Customization
 
-If you are using the `DokiContentView`, you can customize it by setting custom attributes. Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml) which implements every single option available.
+If you are using the `DokiContentView`, you can customize it by setting custom attributes.
+Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml)
+which implements every option available.
 
 For custom fonts and text styles, you can override the following styles:
+
 ```xml
 <style name="Doki.Custom.Headline" parent="Doki.Headline"/>
 <style name="Doki.Custom.Overline" parent="Doki.Overline"/>
@@ -93,6 +118,7 @@ For custom fonts and text styles, you can override the following styles:
 ```
 
 And add the following attributes as you wish and with the values you want:
+
 ```xml
 <item name="fontFamily">sans-serif</item>
 <item name="android:fontFamily">sans-serif</item>
@@ -112,17 +138,9 @@ And add the following attributes as you wish and with the values you want:
 
 # Contributors :sparkles:
 
-* [Jahir Fiquitiva](https://jahir.xyz/) :man_technologist:
-    * [GitHub](https://github.com/jahirfiquitiva/)
-    * [Twitter](https://twitter.com/jahirfiquitiva)
-
-* [James Fenn](https://jfenn.me/) :man_technologist:
-    * [GitHub](https://github.com/fennifith/)
-    * [Twitter](https://twitter.com/fennifith)
-
-* [Eduardo Pratti](https://pratti.design) :art:
-    * [Twitter](https://twitter.com/edpratti)
-
+* [Jahir Fiquitiva](https://jahir.xyz/) ([GitHub](https://github.com/jahirfiquitiva/), [Twitter](https://twitter.com/jahirfiquitiva)) :man_technologist:
+* [James Fenn](https://jfenn.me/) ([GitHub](https://github.com/fennifith/), [Twitter](https://twitter.com/fennifith)) :man_technologist:
+* [Eduardo Pratti](https://pratti.design) ([Twitter](https://twitter.com/edpratti)) :art:
 
 # License
 
