@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
+import dev.doubledot.doki.ui.DokiActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         val activityBtn: AppCompatButton? = findViewById(R.id.launch_activity_btn)
         activityBtn?.setOnClickListener {
-            startActivity(Intent(this@MainActivity, DokiActivity::class.java))
+            DokiActivity.start(this)
         }
 
         val themedActivityBtn: AppCompatButton? = findViewById(R.id.launch_themed_activity_btn)

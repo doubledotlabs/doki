@@ -1,1 +1,7 @@
-<manifest package="dev.doubledot.doki"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.doubledot.doki">
+    <application>
+        <activity
+                android:name="dev.doubledot.doki.ui.DokiActivity"
+                android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
+</manifest>

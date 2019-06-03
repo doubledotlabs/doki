@@ -295,13 +295,15 @@ class DokiContentView @JvmOverloads constructor(
         styledAttrs?.recycle()
     }
 
-    fun loadContent(manufacturerId: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER) {
+    fun loadContent(manufacturerId: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER) : DokiApi {
         api.callback = object: DokiApiCallback {
             override fun onSuccess(response: DokiManufacturer?) {
                 manufacturer = response
             }
         }
         api.getManufacturer(manufacturerId)
+
+        return api
     }
 
     override fun onDetachedFromWindow() {
