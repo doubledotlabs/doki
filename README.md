@@ -142,6 +142,17 @@ And add the following attributes as you wish and with the values you want:
 * [James Fenn](https://jfenn.me/) ([GitHub](https://github.com/fennifith/), [Twitter](https://twitter.com/fennifith)) :man_technologist:
 * [Eduardo Pratti](https://pratti.design) ([Twitter](https://twitter.com/edpratti)) :art:
 
+# Dependencies
+
+Thank you to everyone that helped to make this project possible!
+
+- [urbandroid-team/dont-kill-my-app](https://github.com/urbandroid-team/dont-kill-my-app)
+- [noties/Markwon](https://github.com/noties/Markwon)
+- [square/retrofit](https://github.com/square/retrofit)
+- [square/okhttp](https://github.com/square/okhttp)
+- [ReactiveX/RxAndroid](https://github.com/ReactiveX/RxAndroid)
+- [afollestad/material-dialogs](https://github.com/afollestad/material-dialogs)
+
 # License
 
 ```
