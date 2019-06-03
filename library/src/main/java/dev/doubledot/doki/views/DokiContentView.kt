@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import android.text.Html
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +12,8 @@ import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import com.google.android.material.appbar.AppBarLayout
 import dev.doubledot.doki.R
 import dev.doubledot.doki.api.models.DokiManufacturer
 import dev.doubledot.doki.extensions.*
@@ -26,6 +27,9 @@ class DokiContentView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyle) {
 
     // View bindings ---------------------------------------
+
+    private val appBarLayout : View? by bind(R.id.appbar)
+    private val footerLayout : View? by bind(R.id.footer)
 
     private val headerBackground : View? by bind(R.id.headerBackground)
 
@@ -102,6 +106,18 @@ class DokiContentView @JvmOverloads constructor(
             divider1?.setBackgroundColor(value)
             divider2?.setBackgroundColor(value)
             divider3?.setBackgroundColor(value)
+            field = value
+        }
+
+    override fun setBackgroundColor(color: Int) {
+        super.setBackgroundColor(color)
+        rootBackgroundColor = color
+    }
+
+    private var rootBackgroundColor: Int = Color.TRANSPARENT
+        set(value) {
+            appBarLayout?.setBackgroundColor(value)
+            footerLayout?.setBackgroundColor(value)
             field = value
         }
 
@@ -195,8 +211,14 @@ class DokiContentView @JvmOverloads constructor(
 
             contentExplanation?.setHtmlText(value.explanation)
             contentSolution?.setHtmlText(value.user_solution)
-            value.dev_solution?.let {
-                contentDeveloperSolution?.setHtmlText(it)
+
+            if (value.dev_solution.isNullOrEmpty()) {
+                contentDeveloperSolutionHeader?.visibility = GONE
+                contentDeveloperSolution?.visibility = GONE
+            } else {
+                contentDeveloperSolutionHeader?.visibility = VISIBLE
+                contentDeveloperSolution?.visibility = VISIBLE
+                contentDeveloperSolution?.setHtmlText(value.dev_solution)
             }
 
             contentLoadingView?.gone()
@@ -205,7 +227,8 @@ class DokiContentView @JvmOverloads constructor(
 
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.view_doki_content, this, true)
+        inflater.inflate(R.layout.doki_view_content, this, true)
+        rootBackgroundColor = Color.WHITE
 
         initFromAttrs(attrs)
         device = Device()
@@ -263,7 +286,8 @@ class DokiContentView @JvmOverloads constructor(
         } catch (e: Exception) {
             0
         }
-        setBackgroundColor(bgColor)
+        if (bgColor != 0)
+            setBackgroundColor(bgColor)
 
         styledAttrs?.recycle()
     }

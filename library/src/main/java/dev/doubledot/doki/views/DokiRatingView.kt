@@ -65,7 +65,7 @@ open class DokiRatingView @JvmOverloads constructor(
 
     init {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.view_rating, this, true)
+        inflater.inflate(R.layout.doki_view_rating, this, true)
 
         activeIconsDrawable = try {
             ContextCompat.getDrawable(context, R.drawable.ic_thumb)

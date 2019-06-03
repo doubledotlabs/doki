@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false">
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/startGuideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="24dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/endGuideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="24dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/topGuideline"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="12dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/bottomGuideline"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="12dp"/>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:id="@+id/halfGuideline"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceManufacturerHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:maxLines="1"
+            android:text="@string/manufacturer"
+            app:layout_constraintStart_toEndOf="@id/startGuideline"
+            app:layout_constraintTop_toBottomOf="@id/topGuideline"
+            style="@style/Doki.Custom.Overline"
+            tools:ignore="UnusedAttribute"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceManufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            app:layout_constraintStart_toStartOf="@id/deviceManufacturerHeader"
+            app:layout_constraintTop_toBottomOf="@id/deviceManufacturerHeader"
+            style="@style/Doki.Custom.Headline"
+            tools:ignore="UnusedAttribute"
+            tools:text="Google"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/manufacturerRatingHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_gravity="center_vertical|end"
+            android:maxLines="1"
+            android:text="@string/rating"
+            app:layout_constraintEnd_toStartOf="@id/endGuideline"
+            app:layout_constraintTop_toBottomOf="@id/topGuideline"
+            style="@style/Doki.Custom.Overline"
+            tools:ignore="UnusedAttribute"/>
+
+    <dev.doubledot.doki.views.DokiRatingView
+            android:id="@+id/manufacturerRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            app:layout_constraintEnd_toEndOf="@id/manufacturerRatingHeader"
+            app:layout_constraintTop_toBottomOf="@id/manufacturerRatingHeader"/>
+
+    <dev.doubledot.doki.views.DividerView
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/deviceManufacturer"/>
+
+    <dev.doubledot.doki.views.DividerView
+            android:id="@+id/headerBackground"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceModelHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@string/device"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintEnd_toStartOf="@id/halfGuideline"
+            app:layout_constraintStart_toEndOf="@id/startGuideline"
+            style="@style/Doki.Custom.Overline"
+            tools:ignore="UnusedAttribute"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceModel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@id/deviceModelHeader"
+            app:layout_constraintStart_toStartOf="@id/deviceModelHeader"
+            app:layout_constraintEnd_toEndOf="@id/deviceModelHeader"
+            app:layout_constraintBottom_toTopOf="@id/bottomGuideline"
+            style="@style/Doki.Custom.Headline"
+            tools:text="Pixel 3 XL"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceAndroidVersionHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="1"
+            android:text="@string/running"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintStart_toEndOf="@id/halfGuideline"
+            app:layout_constraintEnd_toStartOf="@id/endGuideline"
+            style="@style/Doki.Custom.Overline"
+            tools:ignore="UnusedAttribute"/>
+
+    <dev.doubledot.doki.views.BaselineGridTextView
+            android:id="@+id/deviceAndroidVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@id/deviceAndroidVersionHeader"
+            app:layout_constraintStart_toStartOf="@id/deviceAndroidVersionHeader"
+            app:layout_constraintEnd_toEndOf="@id/deviceAndroidVersionHeader"
+            app:layout_constraintBottom_toTopOf="@id/bottomGuideline"
+            style="@style/Doki.Custom.Headline"
+            tools:text="Android 9.0 Pie"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

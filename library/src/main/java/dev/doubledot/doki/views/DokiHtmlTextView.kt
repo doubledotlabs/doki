@@ -49,8 +49,10 @@ class DokiHtmlTextView @JvmOverloads constructor(
         movementMethod = LinkMovementMethod.getInstance()
     }
 
-    fun setHtmlText(text: String) {
-        markwon.setMarkdown(this, text)
+    fun setHtmlText(text: String?) {
+        text?.let {
+            markwon.setMarkdown(this, it)
+        }
     }
 
 }
