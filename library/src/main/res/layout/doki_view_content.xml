@@ -99,14 +99,13 @@
                         style="@style/Doki.Custom.Body"
                         tools:text="Solution solution solution solution solution solution solution solution solution solution."/>
 
-                <TextView
+                <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentAttribution"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/doki_content_attribution"
                         android:layout_marginTop="@dimen/twelve_dp"
                         android:layout_marginBottom="@dimen/twelve_dp"
-                        android:linksClickable="true"
                         style="@style/Doki.Custom.Subtext"/>
 
             </LinearLayout>

@@ -21,8 +21,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DokiActivity"/>
-
         <activity
                 android:name=".DokiThemedActivity"
                 android:theme="@style/DefaultDokiTheme"/>
@@ -30,5 +28,6 @@
         <activity
                 android:name=".DokiCustomizedActivity"
                 android:theme="@style/DokiCustomTheme"/>
+
     </application>
 </manifest>

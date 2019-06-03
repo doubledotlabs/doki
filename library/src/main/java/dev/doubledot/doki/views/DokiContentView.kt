@@ -60,7 +60,7 @@ class DokiContentView @JvmOverloads constructor(
     private val contentDeveloperSolutionHeader : TextView? by bind(R.id.contentDeveloperSolutionHeader)
     private val contentDeveloperSolution : DokiHtmlTextView? by bind(R.id.contentDeveloperSolution)
 
-    private val contentAttribution : TextView? by bind(R.id.contentAttribution)
+    private val contentAttribution : DokiHtmlTextView? by bind(R.id.contentAttribution)
 
     private val buttonContainer: View? by bind(R.id.buttonContainer)
     private val closeBtn: TextView? by bind(R.id.buttonClose)
@@ -94,6 +94,7 @@ class DokiContentView @JvmOverloads constructor(
             contentExplanation?.setTextColor(value)
             contentSolution?.setTextColor(value)
             contentDeveloperSolution?.setTextColor(value)
+            contentAttribution?.setTextColor(value)
 
             field = value
         }
@@ -101,6 +102,10 @@ class DokiContentView @JvmOverloads constructor(
     var buttonsTextColor: Int = context.extractColor(intArrayOf(R.attr.colorAccent))
         set(value) {
             closeBtn?.setTextColor(value)
+            contentExplanation?.linkHighlightColor = value
+            contentSolution?.linkHighlightColor = value
+            contentDeveloperSolution?.linkHighlightColor = value
+            contentAttribution?.linkHighlightColor = value
             field = value
         }
 
@@ -212,8 +217,8 @@ class DokiContentView @JvmOverloads constructor(
             manufacturerRating?.visibleIf(value.award > 0)
             manufacturerRatingHeader?.visibleIf(value.award > 0)
 
-            contentExplanation?.setHtmlText(value.explanation)
-            contentSolution?.setHtmlText(value.user_solution)
+            contentExplanation?.htmlText = value.explanation
+            contentSolution?.htmlText = value.user_solution
 
             if (value.dev_solution.isNullOrEmpty()) {
                 contentDeveloperSolutionHeader?.visibility = GONE
@@ -221,7 +226,7 @@ class DokiContentView @JvmOverloads constructor(
             } else {
                 contentDeveloperSolutionHeader?.visibility = VISIBLE
                 contentDeveloperSolution?.visibility = VISIBLE
-                contentDeveloperSolution?.setHtmlText(value.dev_solution)
+                contentDeveloperSolution?.htmlText = value.dev_solution
             }
 
             contentLoadingView?.gone()
@@ -232,6 +237,8 @@ class DokiContentView @JvmOverloads constructor(
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         inflater.inflate(R.layout.doki_view_content, this, true)
         rootBackgroundColor = Color.WHITE
+
+        contentAttribution?.htmlText = context.getString(R.string.doki_content_attribution)
 
         initFromAttrs(attrs)
         device = Device()

@@ -9,5 +9,5 @@
     <string name="doki_solution">Solution</string>
     <string name="doki_dev_solution">Developer Solution</string>
 
-    <string name="doki_content_attribution">Content from <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>, published under the <a href="https://raw.githubusercontent.com/urbandroid-team/dont-kill-my-app/master/LICENCE">Creative Commons Attribution 4.0</a>.</string>
+    <string name="doki_content_attribution"><![CDATA[Content from <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>, published under the <a href="https://raw.githubusercontent.com/urbandroid-team/dont-kill-my-app/master/LICENCE">Creative Commons Attribution 4.0</a>.]]></string>
 </resources>

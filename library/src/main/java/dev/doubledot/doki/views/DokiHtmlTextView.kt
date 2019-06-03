@@ -15,6 +15,8 @@ import ru.noties.markwon.html.HtmlPlugin
 import ru.noties.markwon.html.HtmlTag
 import ru.noties.markwon.html.MarkwonHtmlRenderer
 import ru.noties.markwon.html.tag.SimpleTagHandler
+import ru.noties.markwon.image.ImagesPlugin
+import ru.noties.markwon.image.okhttp.OkHttpImagesPlugin
 import kotlin.math.roundToInt
 
 
@@ -25,6 +27,8 @@ class DokiHtmlTextView @JvmOverloads constructor(
 ) : AppCompatTextView(context, attrs, defStyle) {
 
     private val markwon = Markwon.builder(context)
+        .usePlugin(ImagesPlugin.create(context))
+        .usePlugin(OkHttpImagesPlugin.create())
         .usePlugin(HtmlPlugin.create())
         .usePlugin(object: AbstractMarkwonPlugin() {
             override fun configureHtmlRenderer(builder: MarkwonHtmlRenderer.Builder) {
@@ -37,6 +41,7 @@ class DokiHtmlTextView @JvmOverloads constructor(
 
             override fun configureTheme(builder: MarkwonTheme.Builder) {
                 builder.headingBreakHeight(0)
+                    .linkColor(linkHighlightColor)
                     .blockMargin(24f.dpToPx.roundToInt())
                     .blockQuoteWidth(4f.dpToPx.roundToInt())
                     .codeBackgroundColor(0x00FFFFFF)
@@ -45,14 +50,22 @@ class DokiHtmlTextView @JvmOverloads constructor(
         })
         .build()
 
+    var htmlText : String? = null
+        set(value) {
+            value?.let {
+                markwon.setMarkdown(this, value)
+            }
+            field = value
+        }
+
+    var linkHighlightColor : Int = 0
+        set(value) {
+            field = value
+            htmlText = htmlText
+        }
+
     init {
         movementMethod = LinkMovementMethod.getInstance()
-    }
-
-    fun setHtmlText(text: String?) {
-        text?.let {
-            markwon.setMarkdown(this, it)
-        }
     }
 
 }

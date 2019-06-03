@@ -44,6 +44,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$deps.android.constraintlayout"
     implementation "ru.noties.markwon:core:$deps.markwon"
     implementation "ru.noties.markwon:html:$deps.markwon"
+    implementation "ru.noties.markwon:image-okhttp:$deps.markwon"
 
     api project(path: ':api')
 }

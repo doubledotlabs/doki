@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="dev.doubledot.doki">
+    <uses-permission android:name="android.permission.INTERNET" />
     <application>
         <activity
                 android:name="dev.doubledot.doki.ui.DokiActivity"
