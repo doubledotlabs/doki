@@ -5,14 +5,13 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.text.Html
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import dev.doubledot.doki.R
 import dev.doubledot.doki.api.models.DokiManufacturer
@@ -28,6 +27,8 @@ class DokiContentView @JvmOverloads constructor(
 
     // View bindings ---------------------------------------
 
+    private val headerBackground : View? by bind(R.id.headerBackground)
+
     private val deviceManufacturerHeader: TextView? by bind(R.id.deviceManufacturerHeader)
     private val deviceManufacturer: TextView? by bind(R.id.deviceManufacturer)
 
@@ -37,14 +38,20 @@ class DokiContentView @JvmOverloads constructor(
     private val deviceAndroidVersionHeader: TextView? by bind(R.id.deviceAndroidVersionHeader)
     private val deviceAndroidVersion: TextView? by bind(R.id.deviceAndroidVersion)
 
-    private val contentLayout: FrameLayout? by bind(R.id.doki_actual_content)
-    private val loadingView: ProgressBar? by bind(R.id.doki_loading_view)
-
-    private val manufacturerRatingContainer : View? = null
     private val manufacturerRatingHeader: TextView? by bind(R.id.manufacturerRatingHeader)
     private val manufacturerRating: DokiRatingView? by bind(R.id.manufacturerRating)
 
-    //private val headerContainer: LinearLayout? by bind(R.id.doki_details_header)
+    private val contentLoadingView: ProgressBar? by bind(R.id.contentLoadingView)
+    private val contentScrollView : View? by bind(R.id.contentScrollView)
+
+    private val contentExplanationHeader : TextView? by bind(R.id.contentExplanationHeader)
+    private val contentExplanation : DokiHtmlTextView? by bind(R.id.contentExplanation)
+
+    private val contentSolutionHeader : TextView? by bind(R.id.contentSolutionHeader)
+    private val contentSolution : DokiHtmlTextView? by bind(R.id.contentSolution)
+
+    private val contentDeveloperSolutionHeader : TextView? by bind(R.id.contentDeveloperSolutionHeader)
+    private val contentDeveloperSolution : DokiHtmlTextView? by bind(R.id.contentDeveloperSolution)
 
     private val buttonContainer: View? by bind(R.id.buttonContainer)
     private val reportBtn: TextView? by bind(R.id.buttonReport)
@@ -61,6 +68,11 @@ class DokiContentView @JvmOverloads constructor(
             deviceManufacturer?.setTextColor(value)
             deviceModel?.setTextColor(value)
             deviceAndroidVersion?.setTextColor(value)
+
+            contentExplanationHeader?.setTextColor(value)
+            contentSolutionHeader?.setTextColor(value)
+            contentDeveloperSolutionHeader?.setTextColor(value)
+
             field = value
         }
 
@@ -70,6 +82,11 @@ class DokiContentView @JvmOverloads constructor(
             deviceModelHeader?.setTextColor(value)
             deviceAndroidVersionHeader?.setTextColor(value)
             manufacturerRatingHeader?.setTextColor(value)
+
+            contentExplanation?.setTextColor(value)
+            contentSolution?.setTextColor(value)
+            contentDeveloperSolution?.setTextColor(value)
+
             field = value
         }
 
@@ -90,7 +107,7 @@ class DokiContentView @JvmOverloads constructor(
 
     var headerBackgroundColor: Int = Color.TRANSPARENT
         set(value) {
-            // TODO: set header color
+            headerBackground?.setBackgroundColor(value)
             field = value
         }
 
@@ -137,9 +154,18 @@ class DokiContentView @JvmOverloads constructor(
             field = value
         }
 
-    var lineHeight : Float = 1.8F
+    var lineHeight : Float = 1F
+        set(value) {
+            contentExplanation?.setLineSpacing(lineSeparation, value)
+            contentSolution?.setLineSpacing(lineSeparation, value)
+            contentDeveloperSolution?.setLineSpacing(lineSeparation, value)
+            field = value
+        }
+
+    var lineSeparation : Float = 0F
         set(value) {
             field = value
+            lineHeight = lineHeight
         }
 
     // Data / models ------------------------------------
@@ -164,9 +190,17 @@ class DokiContentView @JvmOverloads constructor(
             value ?: return
 
             manufacturerRating?.rating = value.award
-            manufacturerRatingContainer?.visibleIf(value.award > 0)
+            manufacturerRating?.visibleIf(value.award > 0)
+            manufacturerRatingHeader?.visibleIf(value.award > 0)
 
-            loadingView?.gone()
+            contentExplanation?.setHtmlText(value.explanation)
+            contentSolution?.setHtmlText(value.user_solution)
+            value.dev_solution?.let {
+                contentDeveloperSolution?.setHtmlText(it)
+            }
+
+            contentLoadingView?.gone()
+            contentScrollView?.visible()
         }
 
     init {
@@ -197,6 +231,8 @@ class DokiContentView @JvmOverloads constructor(
         iconsStyle = getStyledIconsStyle(styledAttrs) ?: iconsStyle
         activeIconsColor = styledAttrs?.getColorOrNull(R.styleable.DokiContentView_dokiActiveIconsColor) ?: activeIconsColor
         inactiveIconsColor = styledAttrs?.getColorOrNull(R.styleable.DokiContentView_dokiInactiveIconsColor) ?: inactiveIconsColor
+        lineHeight = 1F
+        lineSeparation = 8F.dpToPx
 
         // Data
 

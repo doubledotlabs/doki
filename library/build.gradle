@@ -42,6 +42,8 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$deps.android.appcompat"
     implementation "com.google.android.material:material:$deps.android.material"
     implementation "androidx.constraintlayout:constraintlayout:$deps.android.constraintlayout"
+    implementation "ru.noties.markwon:core:$deps.markwon"
+    implementation "ru.noties.markwon:html:$deps.markwon"
 
     api project(path: ':api')
 }

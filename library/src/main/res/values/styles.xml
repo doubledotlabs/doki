@@ -10,6 +10,24 @@
         <item name="android:letterSpacing">0.0125</item>
     </style>
 
+    <style name="Doki.Header" parent="TextAppearance.AppCompat.Title">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:letterSpacing">0.0125</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+    </style>
+
+    <style name="Doki.Body" parent="TextAppearance.AppCompat.Title">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineSpacingMultiplier">2</item>
+    </style>
+
     <style name="Doki.Overline" parent="TextAppearance.AppCompat">
         <item name="fontFamily">sans-serif</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -29,6 +47,8 @@
     </style>
 
     <style name="Doki.Custom.Headline" parent="Doki.Headline"/>
+    <style name="Doki.Custom.Header" parent="Doki.Header"/>
+    <style name="Doki.Custom.Body" parent="Doki.Body"/>
     <style name="Doki.Custom.Overline" parent="Doki.Overline"/>
     <style name="Doki.Custom.Button" parent="Doki.Button"/>
 </resources>

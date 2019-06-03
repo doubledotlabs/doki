@@ -99,6 +99,13 @@
                 android:layout_marginTop="12dp"
                 app:layout_constraintTop_toBottomOf="@id/deviceManufacturer"/>
 
+        <dev.doubledot.doki.views.DividerView
+                android:id="@+id/headerBackground"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/divider1"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
         <dev.doubledot.doki.views.BaselineGridTextView
                 android:id="@+id/deviceModelHeader"
                 android:layout_width="wrap_content"
@@ -158,13 +165,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
-            android:id="@+id/doki_actual_content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
 
         <ProgressBar
-                android:id="@+id/doki_loading_view"
+                android:id="@+id/contentLoadingView"
                 style="?android:progressBarStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -182,43 +188,53 @@
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingLeft="24dp"
+                    android:paddingRight="24dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                 <dev.doubledot.doki.views.BaselineGridTextView
                         android:id="@+id/contentExplanationHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/Doki.Custom.Headline"
-                        tools:text="Explanation"/>
+                        style="@style/Doki.Custom.Header"
+                        android:text="@string/explanation"/>
 
-                <dev.doubledot.doki.views.BaselineGridTextView
+                <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentExplanation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        style="@style/Doki.Custom.Body"
+                        tools:text="Explanation explanation explanation explanation explanation explanation explanation."/>
 
                 <dev.doubledot.doki.views.BaselineGridTextView
                         android:id="@+id/contentSolutionHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/Doki.Custom.Headline"
-                        tools:text="Solution"/>
+                        style="@style/Doki.Custom.Header"
+                        android:text="@string/solution"/>
 
-                <dev.doubledot.doki.views.BaselineGridTextView
+                <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentSolution"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        style="@style/Doki.Custom.Body"
+                        tools:text="Solution solution solution solution solution solution solution solution solution solution."/>
 
                 <dev.doubledot.doki.views.BaselineGridTextView
                         android:id="@+id/contentDeveloperSolutionHeader"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/Doki.Custom.Headline"
-                        tools:text="Developer Solution"/>
+                        android:text="Developer Solution"
+                        style="@style/Doki.Custom.Header"/>
 
-                <dev.doubledot.doki.views.BaselineGridTextView
+                <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentDeveloperSolution"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        style="@style/Doki.Custom.Body"
+                        tools:text="Solution solution solution solution solution solution solution solution solution solution."/>
 
             </LinearLayout>
 
