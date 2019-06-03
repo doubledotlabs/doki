@@ -1,14 +1,13 @@
 <resources>
-    <string name="app_name">doki</string>
+    <string name="doki_manufacturer">Manufacturer</string>
+    <string name="doki_rating">Rating</string>
+    <string name="doki_device">Device</string>
+    <string name="doki_running">Running</string>
+    <string name="doki_close">Close</string>
 
-    <string name="manufacturer">Manufacturer</string>
-    <string name="rating">Rating</string>
-    <string name="device">Device</string>
-    <string name="running">Running</string>
-    <string name="close">Close</string>
-    <string name="report">Report</string>
+    <string name="doki_explanation">Explanation</string>
+    <string name="doki_solution">Solution</string>
+    <string name="doki_dev_solution">Developer Solution</string>
 
-    <string name="explanation">Explanation</string>
-    <string name="solution">Solution</string>
-
+    <string name="doki_content_attribution">Content from <a href="https://dontkillmyapp.com/">dontkillmyapp.com</a>, published under the <a href="https://raw.githubusercontent.com/urbandroid-team/dont-kill-my-app/master/LICENCE">Creative Commons Attribution 4.0</a>.</string>
 </resources>

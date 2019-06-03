@@ -62,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Doki.Custom.Header"
-                        android:text="@string/explanation"/>
+                        android:text="@string/doki_explanation"/>
 
                 <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentExplanation"
@@ -76,7 +76,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/Doki.Custom.Header"
-                        android:text="@string/solution"/>
+                        android:text="@string/doki_solution"/>
 
                 <dev.doubledot.doki.views.DokiHtmlTextView
                         android:id="@+id/contentSolution"
@@ -98,6 +98,16 @@
                         android:layout_height="wrap_content"
                         style="@style/Doki.Custom.Body"
                         tools:text="Solution solution solution solution solution solution solution solution solution solution."/>
+
+                <TextView
+                        android:id="@+id/contentAttribution"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/doki_content_attribution"
+                        android:layout_marginTop="@dimen/twelve_dp"
+                        android:layout_marginBottom="@dimen/twelve_dp"
+                        android:linksClickable="true"
+                        style="@style/Doki.Custom.Subtext"/>
 
             </LinearLayout>
 
@@ -125,23 +135,6 @@
                 android:orientation="horizontal">
 
             <dev.doubledot.doki.views.BaselineGridTextView
-                    android:id="@+id/buttonReport"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:minHeight="@dimen/touch_target"
-                    android:background="?selectableItemBackground"
-                    android:textAllCaps="true"
-                    android:gravity="start|center_vertical"
-                    android:paddingTop="@dimen/twelve_dp"
-                    android:paddingBottom="@dimen/twelve_dp"
-                    android:paddingStart="@dimen/twenty_four_dp"
-                    android:paddingEnd="@dimen/twenty_four_dp"
-                    android:text="@string/report"
-                    style="@style/Doki.Custom.Button"
-                    android:visibility="gone"/>
-
-            <dev.doubledot.doki.views.BaselineGridTextView
                     android:id="@+id/buttonClose"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -154,7 +147,7 @@
                     android:paddingBottom="@dimen/twelve_dp"
                     android:paddingStart="@dimen/twenty_four_dp"
                     android:paddingEnd="@dimen/twenty_four_dp"
-                    android:text="@string/close"
+                    android:text="@string/doki_close"
                     style="@style/Doki.Custom.Button"/>
 
         </LinearLayout>

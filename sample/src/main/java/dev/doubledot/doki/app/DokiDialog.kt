@@ -6,12 +6,7 @@ import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.afollestad.materialdialogs.MaterialDialog
-import com.afollestad.materialdialogs.callbacks.onShow
 import com.afollestad.materialdialogs.customview.customView
-import com.afollestad.materialdialogs.customview.getCustomView
-import dev.doubledot.doki.api.models.DokiManufacturer
-import dev.doubledot.doki.api.tasks.DokiApi
-import dev.doubledot.doki.api.tasks.DokiApiCallback
 import dev.doubledot.doki.views.DokiContentView
 
 class DokiDialog : DialogFragment() {
@@ -25,7 +20,7 @@ class DokiDialog : DialogFragment() {
 
         return MaterialDialog(context!!).show {
             customView(view = dokiCustomView)
-            positiveButton(R.string.close) {
+            positiveButton(R.string.doki_close) {
                 dismiss()
             }
         }

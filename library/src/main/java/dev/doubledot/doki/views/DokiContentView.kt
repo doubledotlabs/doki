@@ -60,8 +60,9 @@ class DokiContentView @JvmOverloads constructor(
     private val contentDeveloperSolutionHeader : TextView? by bind(R.id.contentDeveloperSolutionHeader)
     private val contentDeveloperSolution : DokiHtmlTextView? by bind(R.id.contentDeveloperSolution)
 
+    private val contentAttribution : TextView? by bind(R.id.contentAttribution)
+
     private val buttonContainer: View? by bind(R.id.buttonContainer)
-    private val reportBtn: TextView? by bind(R.id.buttonReport)
     private val closeBtn: TextView? by bind(R.id.buttonClose)
 
     private val divider1: View? by bind(R.id.divider1)
@@ -99,7 +100,6 @@ class DokiContentView @JvmOverloads constructor(
 
     var buttonsTextColor: Int = context.extractColor(intArrayOf(R.attr.colorAccent))
         set(value) {
-            reportBtn?.setTextColor(value)
             closeBtn?.setTextColor(value)
             field = value
         }
@@ -263,7 +263,7 @@ class DokiContentView @JvmOverloads constructor(
         // Data
 
         val defaultExplanationTitleText = try {
-            context.getString(R.string.explanation)
+            context.getString(R.string.doki_explanation)
         } catch (e: Exception) {
             ""
         }
@@ -274,7 +274,7 @@ class DokiContentView @JvmOverloads constructor(
         }
 
         val defaultSolutionTitleText = try {
-            context.getString(R.string.solution)
+            context.getString(R.string.doki_solution)
         } catch (e: Exception) {
             ""
         }

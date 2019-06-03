@@ -28,6 +28,13 @@
         <item name="android:lineSpacingMultiplier">2</item>
     </style>
 
+    <style name="Doki.Subtext" parent="TextAppearance.AppCompat.Title">
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
     <style name="Doki.Overline" parent="TextAppearance.AppCompat">
         <item name="fontFamily">sans-serif</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -49,6 +56,7 @@
     <style name="Doki.Custom.Headline" parent="Doki.Headline"/>
     <style name="Doki.Custom.Header" parent="Doki.Header"/>
     <style name="Doki.Custom.Body" parent="Doki.Body"/>
+    <style name="Doki.Custom.Subtext" parent="Doki.Subtext"/>
     <style name="Doki.Custom.Overline" parent="Doki.Overline"/>
     <style name="Doki.Custom.Button" parent="Doki.Button"/>
 </resources>
