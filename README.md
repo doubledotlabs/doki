@@ -36,7 +36,7 @@ allprojects {
 
 ```gradle
 dependencies {
-    compile('dev.doubledot:doki:0.0.1@aar') {
+    implementation('dev.doubledot.doki:library:0.0.1@aar') {
         transitive = true
     }
 }
