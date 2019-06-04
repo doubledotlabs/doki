@@ -17,6 +17,14 @@ a result of these issues.
 [![JitPack](https://jitpack.io/v/dev.doubledot/doki.svg)](https://jitpack.io/#dev.doubledot/doki)
 [![Build Status](https://travis-ci.org/DoubleDotLabs/doki.svg?branch=master)](https://travis-ci.org/DoubleDotLabs/doki)
 
+## Previews
+
+| Default Activity | Activity w Custom Theme | Dialog                                  | Customized Doki View |
+|------------------|-------------------------|-----------------------------------------|----------------------|
+| ![The default doki activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![Doki in a custom-themed activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![Doki inside of a dialog.](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) | ![Doki with nice, fun, shiny colours.](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) |
+
+For testing and experimentation purposes, a sample apk can be downloaded [here](../../releases).
+
 # How to use it
 
 Doki is available via JitPack, so getting it as simple as adding it as a
@@ -141,12 +149,6 @@ And add the following attributes as you wish and with the values you want:
 ```
 
 **Note: don't change the parent styles, just add the attributes you want to modify**
-
-## Previews
-
-| Default Activity | Activity w Custom Theme | Dialog                                  | Customized Doki View |
-|------------------|-------------------------|-----------------------------------------|----------------------|
-| ![The default doki activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![Doki in a custom-themed activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![Doki inside of a dialog.](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) | ![Doki with nice, fun, shiny colours.](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) |
 
 # Contributors :sparkles:
 
