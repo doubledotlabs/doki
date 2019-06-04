@@ -50,16 +50,24 @@ of the Doki API that is quick and easy to set up and use. Simply call
 
 <details open>
 <summary>Kotlin</summary>
-<pre>
+<p>
+
+```kotlin
 DokiActivity.start(context = ...)
-</pre>
+```
+
+</p>
 </details>
 
 <details>
 <summary>Java</summary>
-<pre>
+<p>
+
+```java
 DokiActivity.start(context);
-</pre>
+```
+
+</p>
 </details>
 
 Alternatively, you can use `DokiActivity.newIntent(...)` to create an
@@ -85,18 +93,26 @@ you must call `loadContent()` on the view.
 
 <details open>
 <summary>Kotlin</summary>
-<pre>
-val dokiView : DokiContentView? = findViewById(R.id.doki_content)<br>
-dokiView?.loadContent()
-</pre>
+<p>
+
+```kotlin
+val doki : DokiContentView? = findViewById(R.id.doki_content)
+doki?.loadContent()
+```
+
+</p>
 </details>
 
 <details>
 <summary>Java</summary>
-<pre>
-DokiContentView dokiView = findViewById(R.id.doki_content);<br>
-if (dokiView != null) dokiView.loadContent();
-</pre>
+<p>
+
+```java
+DokiContentView doki = findViewById(R.id.doki_content);
+if (doki != null) doki.loadContent();
+```
+
+</p>
 </details>
 
 ## Customization
