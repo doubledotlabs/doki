@@ -1,4 +1,10 @@
-# Doki 
+Doki 
+[![Freenode IRC channel.](https://img.shields.io/badge/freenode-%23%23doubledotlabs-brightgreen.svg)](https://webchat.freenode.net/?channels=%23%23doubledotlabs&uio=MTY9dHJ1ZSY5PXRydWUmMTE9MjE1e1)
+[![Twitter account.](https://img.shields.io/badge/twitter-%40doubledotlabs-blue.svg?color=43b4f9&logo=twitter)](https://twitter.com/doubledotlabs)
+![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
+[![Build Status](https://travis-ci.org/DoubleDotLabs/doki.svg?branch=master)](https://travis-ci.org/DoubleDotLabs/doki)
+[![JitPack](https://jitpack.io/v/dev.doubledot/doki.svg)](https://jitpack.io/#dev.doubledot/doki)
+=====
 
 **A Don't Kill My App Library**
 
@@ -10,12 +16,6 @@ information from this site to the user of an affected application, and attempts
 to walk users through the process of solving the problem themselves, hopefully
 reducing the amount of time that developers have to spend providing support as
 a result of these issues.
-
-[![Freenode IRC channel.](https://img.shields.io/badge/irc.freenode.net-%23%23doubledotlabs-brightgreen.svg)](https://webchat.freenode.net/?channels=%23%23doubledotlabs&uio=MTY9dHJ1ZSY5PXRydWUmMTE9MjE1e1)
-[![Twitter account.](https://img.shields.io/badge/twitter-%40doubledotlabs-blue.svg?color=43b4f9&logo=twitter)](https://twitter.com/doubledotlabs)
-![API](https://img.shields.io/badge/API-16%2B-34bf49.svg)
-[![JitPack](https://jitpack.io/v/dev.doubledot/doki.svg)](https://jitpack.io/#dev.doubledot/doki)
-[![Build Status](https://travis-ci.org/DoubleDotLabs/doki.svg?branch=master)](https://travis-ci.org/DoubleDotLabs/doki)
 
 ## Previews
 
