@@ -3,14 +3,14 @@ package dev.doubledot.doki.api.extensions
 import android.os.Build
 import android.os.Build.VERSION_CODES.*
 
-val androidVersion: String
+internal val androidVersion: String
     get() {
         var version = Build.VERSION.RELEASE ?: ""
         if (!version.hasContent()) version = Build.VERSION.CODENAME ?: ""
         return version
     }
 
-val androidVersionName: String
+internal val androidVersionName: String
     get() {
         return when (Build.VERSION.SDK_INT) {
             JELLY_BEAN, JELLY_BEAN_MR1, JELLY_BEAN_MR2 -> "JellyBean"

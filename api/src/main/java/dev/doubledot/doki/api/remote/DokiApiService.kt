@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface DokiApiService {
+internal interface DokiApiService {
 
     @GET("{manufacturer}.json")
     fun getManufacturer(@Path("manufacturer") manufacturer : String) : Observable<DokiManufacturer>
