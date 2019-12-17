@@ -2,6 +2,7 @@ package dev.doubledot.doki.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import dev.doubledot.doki.ui.DokiContentCallback
 import dev.doubledot.doki.views.DokiContentView
 
 class DokiThemedActivity : AppCompatActivity() {
@@ -15,7 +16,11 @@ class DokiThemedActivity : AppCompatActivity() {
         setContentView(R.layout.activity_doki)
 
         dokiContent?.setOnCloseListener { supportFinishAfterTransition() }
-        dokiContent?.loadContent()
+        dokiContent?.loadContent(callback = object : DokiContentCallback {
+            override fun onStartedToLoad() {}
+            override fun onLoaded() {}
+            override fun onFailedToLoad() {}
+        })
     }
 
 }

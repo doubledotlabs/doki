@@ -17,7 +17,7 @@ class DokiApi {
     }
 
     private var disposable: Disposable? = null
-    
+
     fun getManufacturer(
         manufacturer: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER,
         callback: DokiApiCallback,

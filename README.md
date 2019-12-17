@@ -123,10 +123,28 @@ if (doki != null) doki.loadContent();
 </p>
 </details>
 
+You can pass a `DokiContentCallback` instance to the `loadContent` method to receive events:
+
+<details open>
+<summary>Kotlin</summary>
+<p>
+
+```kotlin
+val doki : DokiContentView? = findViewById(R.id.doki_content)
+doki?.loadContent(callback = object : DokiContentCallback {
+    override fun onStartedToLoad() {}
+    override fun onLoaded() {}
+    override fun onFailedToLoad() {}
+})
+```
+
+</p>
+</details>
+
 ## Customization
 
 If you are using the `DokiContentView`, you can customize it by setting custom attributes.
-Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml)
+Please check [this file](https://github.com/doubledotlabs/doki/blob/master/sample/src/main/res/layout/activity_doki_custom.xml)
 which implements every option available.
 
 For custom fonts and text styles, you can override the following styles:
@@ -135,6 +153,9 @@ For custom fonts and text styles, you can override the following styles:
 <style name="Doki.Custom.Headline" parent="Doki.Headline"/>
 <style name="Doki.Custom.Overline" parent="Doki.Overline"/>
 <style name="Doki.Custom.Button" parent="Doki.Button"/>
+<style name="Doki.Custom.Body" parent="Doki.Body"/>
+<style name="Doki.Custom.Header" parent="Doki.Header"/>
+<style name="Doki.Custom.Subtext" parent="Doki.Subtext"/>
 ```
 
 And add the following attributes as you wish and with the values you want:

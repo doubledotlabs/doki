@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import dev.doubledot.doki.R
 import dev.doubledot.doki.api.extensions.DONT_KILL_MY_APP_DEFAULT_MANUFACTURER
@@ -235,8 +236,7 @@ class DokiContentView @JvmOverloads constructor(
         }
 
     init {
-        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        inflater.inflate(R.layout.doki_view_content, this, true)
+        LayoutInflater.from(context).inflate(R.layout.doki_view_content, this, true)
         rootBackgroundColor = Color.WHITE
 
         contentAttribution?.htmlText = context.getString(R.string.doki_content_attribution)
