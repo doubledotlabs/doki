@@ -10,31 +10,36 @@ import io.reactivex.schedulers.Schedulers
 import retrofit2.HttpException
 
 @Suppress("MemberVisibilityCanBePrivate")
-open class DokiApi {
+class DokiApi {
 
-    val dokiApiService by lazy {
+    private val dokiApiService by lazy {
         DokiApiService.create()
     }
 
-    var disposable: Disposable? = null
-    var callback: DokiApiCallback? = null
-    var shouldFallback : Boolean = true
+    private var disposable: Disposable? = null
 
-    fun getManufacturer(manufacturer : String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER) {
+    fun getManufacturer(
+        manufacturer: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER,
+        callback: DokiApiCallback,
+        shouldFallback: Boolean = true
+    ) {
         disposable = dokiApiService.getManufacturer(manufacturer)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { result : DokiManufacturer -> callback?.onSuccess(result) },
+                { result: DokiManufacturer -> callback.onSuccess(result) },
                 { error ->
                     if ((error as? HttpException)?.code() == 404 && shouldFallback) {
-                        getManufacturer(DONT_KILL_MY_APP_FALLBACK_MANUFACTURER)
-                        shouldFallback = false
-                    } else callback?.onError(error)
+                        getManufacturer(
+                            DONT_KILL_MY_APP_FALLBACK_MANUFACTURER,
+                            callback,
+                            shouldFallback = false
+                        )
+                    } else callback.onError(error)
                 }
             )
 
-        callback?.onStart()
+        callback.onStart()
     }
 
     fun cancel() {

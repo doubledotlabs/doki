@@ -3,7 +3,7 @@ package dev.doubledot.doki.api.extensions
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
-fun String.hasContent() = isNotEmpty() && isNotBlank()
+internal fun String.hasContent() = isNotEmpty() && isNotBlank()
 
 internal fun Number.round(decimalCount: Int): String {
     val expression = StringBuilder().append("#.")
