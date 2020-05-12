@@ -45,6 +45,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$deps.retrofit"
 
     implementation "io.reactivex.rxjava2:rxandroid:$deps.rxandroid"
+    implementation "org.jsoup:jsoup:1.7.2"
 }
 
 apply from: '../versions.gradle'
