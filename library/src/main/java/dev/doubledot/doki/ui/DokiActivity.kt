@@ -18,7 +18,7 @@ public class DokiActivity : AppCompatActivity() {
         val dokiView = DokiContentView(context = this)
         setContentView(dokiView)
 
-        api = dokiView.loadContent(manufacturerId = intent.extras?.run {
+        api = dokiView.loadContent(appName = "Doki App", manufacturerId = intent.extras?.run {
             this[MANUFACTURER_EXTRA] as? String
         } ?: DONT_KILL_MY_APP_DEFAULT_MANUFACTURER)
 

@@ -197,6 +197,7 @@ class DokiContentView @JvmOverloads constructor(
     private var devSolutionMessage: String = ""
     var explanationTitleText: String = ""
     var solutionTitleText: String = ""
+    var appName: String = ""
 
     var device : Device? = null
         set(value) {
@@ -218,7 +219,12 @@ class DokiContentView @JvmOverloads constructor(
             manufacturerRatingHeader?.visibleIf(value.award > 0)
 
             contentExplanation?.htmlText = value.explanation
-            contentSolution?.htmlText = value.user_solution
+            contentSolution?.htmlText = value.user_solution.let {
+                if(appName.isNotEmpty())
+                    it.replace("your app", appName, true)
+                else
+                    it
+            }
 
             if (value.dev_solution.isNullOrEmpty()) {
                 contentDeveloperSolutionHeader?.visibility = GONE
@@ -302,7 +308,11 @@ class DokiContentView @JvmOverloads constructor(
         styledAttrs?.recycle()
     }
 
-    fun loadContent(manufacturerId: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER) : DokiApi {
+    fun loadContent(
+        manufacturerId: String = DONT_KILL_MY_APP_DEFAULT_MANUFACTURER,
+        appName: String = ""
+    ) : DokiApi {
+        this.appName = appName
         api.callback = object: DokiApiCallback {
             override fun onSuccess(response: DokiManufacturer?) {
                 manufacturer = response
