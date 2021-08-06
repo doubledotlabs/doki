@@ -197,7 +197,7 @@ class DokiContentView @JvmOverloads constructor(
     private var devSolutionMessage: String = ""
     var explanationTitleText: String = ""
     var solutionTitleText: String = ""
-    var appName: String = ""
+    private var appName: String = ""
 
     var device : Device? = null
         set(value) {
@@ -335,6 +335,16 @@ class DokiContentView @JvmOverloads constructor(
     fun setButtonsVisibility(visible: Boolean) {
         buttonContainer?.visibleIf(visible)
         divider2?.visibleIf(visible)
+    }
+
+    fun setExplanationVisibility(visible: Boolean) {
+        contentExplanationHeader?.visibleIf(visible)
+        contentExplanation?.visibleIf(visible)
+    }
+
+    fun setDeveloperSolutionVisibility(visible: Boolean) {
+        contentDeveloperSolutionHeader?.visibleIf(visible)
+        contentDeveloperSolution?.visibleIf(visible)
     }
 
     private fun getStyledIconsStyle(attrs : TypedArray?) : DokiRatingView.Style? {

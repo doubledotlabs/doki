@@ -14,8 +14,12 @@ class DokiCustomizedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_doki_custom)
 
-        dokiContent?.setOnCloseListener { supportFinishAfterTransition() }
-        dokiContent?.loadContent()
+        dokiContent?.apply {
+            setOnCloseListener { supportFinishAfterTransition() }
+            setExplanationVisibility(false)
+            setDeveloperSolutionVisibility(false)
+            loadContent(appName = "Doki App")
+        }
     }
 
 }
