@@ -21,7 +21,7 @@ a result of these issues.
 
 | Default Activity | Activity w Custom Theme | Dialog                                  | Customized Doki View |
 |------------------|-------------------------|-----------------------------------------|----------------------|
-| ![The default doki activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/1.png) | ![Doki in a custom-themed activity.](https://github.com/DoubleDotLabs/doki/raw/master/art/2.png) | ![Doki inside of a dialog.](https://github.com/DoubleDotLabs/doki/raw/master/art/3.png) | ![Doki with nice, fun, shiny colours.](https://github.com/DoubleDotLabs/doki/raw/master/art/4.png) |
+| ![The default doki activity.](https://github.com/DoubleDotLabs/doki/raw/main/art/1.png) | ![Doki in a custom-themed activity.](https://github.com/DoubleDotLabs/doki/raw/main/art/2.png) | ![Doki inside of a dialog.](https://github.com/DoubleDotLabs/doki/raw/main/art/3.png) | ![Doki with nice, fun, shiny colours.](https://github.com/DoubleDotLabs/doki/raw/main/art/4.png) |
 
 For testing and experimentation purposes, a sample apk can be downloaded [here](../../releases).
 
@@ -126,7 +126,7 @@ if (doki != null) doki.loadContent();
 ## Customization
 
 If you are using the `DokiContentView`, you can customize it by setting custom attributes.
-Please check [this file](https://github.com/DoubleDotLabs/doki/blob/master/app/src/main/res/layout/layout_doki_view_custom.xml)
+Please check [this file](https://github.com/doubledotlabs/doki/blob/c18efeb07292e191e39e3e62d589009474919c56/sample/src/main/res/layout/activity_doki_custom.xml#L9-L26)
 which implements every option available.
 
 For custom fonts and text styles, you can override the following styles:
